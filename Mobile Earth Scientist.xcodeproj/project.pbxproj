@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D5289FFB27FDD40F0000BCC1 /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = D5289FFA27FDD40F0000BCC1 /* XMLCoder */; };
+		D5289FFD27FDF6940000BCC1 /* WMS_Capabilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5289FFC27FDF6940000BCC1 /* WMS_Capabilities.swift */; };
 		D5ADE4F527FB726E00D59475 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ADE4F427FB726E00D59475 /* AppDelegate.swift */; };
 		D5ADE4F727FB726E00D59475 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ADE4F627FB726E00D59475 /* SceneDelegate.swift */; };
 		D5ADE4F927FB726E00D59475 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ADE4F827FB726E00D59475 /* MapViewController.swift */; };
@@ -16,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D5289FFC27FDF6940000BCC1 /* WMS_Capabilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMS_Capabilities.swift; sourceTree = "<group>"; };
 		D5ADE4F127FB726E00D59475 /* Mobile Earth Scientist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mobile Earth Scientist.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5ADE4F427FB726E00D59475 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D5ADE4F627FB726E00D59475 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -31,6 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5289FFB27FDD40F0000BCC1 /* XMLCoder in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +67,7 @@
 				D5ADE4FD27FB727000D59475 /* Assets.xcassets */,
 				D5ADE4FF27FB727000D59475 /* LaunchScreen.storyboard */,
 				D5ADE50227FB727000D59475 /* Info.plist */,
+				D5289FFC27FDF6940000BCC1 /* WMS_Capabilities.swift */,
 			);
 			path = "Mobile Earth Scientist";
 			sourceTree = "<group>";
@@ -83,6 +88,9 @@
 			dependencies = (
 			);
 			name = "Mobile Earth Scientist";
+			packageProductDependencies = (
+				D5289FFA27FDD40F0000BCC1 /* XMLCoder */,
+			);
 			productName = "Mobile Earth Scientist";
 			productReference = D5ADE4F127FB726E00D59475 /* Mobile Earth Scientist.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +119,9 @@
 				Base,
 			);
 			mainGroup = D5ADE4E827FB726E00D59475;
+			packageReferences = (
+				D5289FF927FDD40F0000BCC1 /* XCRemoteSwiftPackageReference "XMLCoder" */,
+			);
 			productRefGroup = D5ADE4F227FB726E00D59475 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -139,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5ADE4F927FB726E00D59475 /* MapViewController.swift in Sources */,
+				D5289FFD27FDF6940000BCC1 /* WMS_Capabilities.swift in Sources */,
 				D5ADE4F527FB726E00D59475 /* AppDelegate.swift in Sources */,
 				D5ADE4F727FB726E00D59475 /* SceneDelegate.swift in Sources */,
 			);
@@ -358,6 +370,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D5289FF927FDD40F0000BCC1 /* XCRemoteSwiftPackageReference "XMLCoder" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MaxDesiatov/XMLCoder.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D5289FFA27FDD40F0000BCC1 /* XMLCoder */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5289FF927FDD40F0000BCC1 /* XCRemoteSwiftPackageReference "XMLCoder" */;
+			productName = XMLCoder;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D5ADE4E927FB726E00D59475 /* Project object */;
 }
