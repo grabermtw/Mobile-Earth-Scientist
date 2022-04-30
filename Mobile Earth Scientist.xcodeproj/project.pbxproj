@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D409AD49281C77B200E8388D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D409AD48281C77B200E8388D /* MapKit.framework */; };
+		D409AD4B281C7D0100E8388D /* WMSLayerOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = D409AD4A281C7D0100E8388D /* WMSLayerOverlay.swift */; };
+		D409AD4D281C7DDE00E8388D /* WMSLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D409AD4C281C7DDE00E8388D /* WMSLayer.swift */; };
+		D409AD4F281C7FA700E8388D /* WMSLayerMapOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D409AD4E281C7FA700E8388D /* WMSLayerMapOverlayView.swift */; };
 		D5289FFB27FDD40F0000BCC1 /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = D5289FFA27FDD40F0000BCC1 /* XMLCoder */; };
 		D5289FFD27FDF6940000BCC1 /* WMS_Capabilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5289FFC27FDF6940000BCC1 /* WMS_Capabilities.swift */; };
 		D5ADE4F527FB726E00D59475 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ADE4F427FB726E00D59475 /* AppDelegate.swift */; };
@@ -18,6 +22,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D409AD48281C77B200E8388D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		D409AD4A281C7D0100E8388D /* WMSLayerOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMSLayerOverlay.swift; sourceTree = "<group>"; };
+		D409AD4C281C7DDE00E8388D /* WMSLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMSLayer.swift; sourceTree = "<group>"; };
+		D409AD4E281C7FA700E8388D /* WMSLayerMapOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMSLayerMapOverlayView.swift; sourceTree = "<group>"; };
 		D5289FFC27FDF6940000BCC1 /* WMS_Capabilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMS_Capabilities.swift; sourceTree = "<group>"; };
 		D5ADE4F127FB726E00D59475 /* Mobile Earth Scientist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mobile Earth Scientist.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5ADE4F427FB726E00D59475 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -34,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D409AD49281C77B200E8388D /* MapKit.framework in Frameworks */,
 				D5289FFB27FDD40F0000BCC1 /* XMLCoder in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -41,11 +50,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D409AD47281C77B200E8388D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D409AD48281C77B200E8388D /* MapKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D5ADE4E827FB726E00D59475 = {
 			isa = PBXGroup;
 			children = (
 				D5ADE4F327FB726E00D59475 /* Mobile Earth Scientist */,
 				D5ADE4F227FB726E00D59475 /* Products */,
+				D409AD47281C77B200E8388D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,6 +80,9 @@
 			children = (
 				D5ADE4F427FB726E00D59475 /* AppDelegate.swift */,
 				D5ADE4F627FB726E00D59475 /* SceneDelegate.swift */,
+				D409AD4E281C7FA700E8388D /* WMSLayerMapOverlayView.swift */,
+				D409AD4A281C7D0100E8388D /* WMSLayerOverlay.swift */,
+				D409AD4C281C7DDE00E8388D /* WMSLayer.swift */,
 				D5ADE4F827FB726E00D59475 /* MapViewController.swift */,
 				D5ADE4FA27FB726E00D59475 /* Main.storyboard */,
 				D5ADE4FD27FB727000D59475 /* Assets.xcassets */,
@@ -152,7 +173,10 @@
 				D5ADE4F927FB726E00D59475 /* MapViewController.swift in Sources */,
 				D5289FFD27FDF6940000BCC1 /* WMS_Capabilities.swift in Sources */,
 				D5ADE4F527FB726E00D59475 /* AppDelegate.swift in Sources */,
+				D409AD4D281C7DDE00E8388D /* WMSLayer.swift in Sources */,
+				D409AD4F281C7FA700E8388D /* WMSLayerMapOverlayView.swift in Sources */,
 				D5ADE4F727FB726E00D59475 /* SceneDelegate.swift in Sources */,
+				D409AD4B281C7D0100E8388D /* WMSLayerOverlay.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

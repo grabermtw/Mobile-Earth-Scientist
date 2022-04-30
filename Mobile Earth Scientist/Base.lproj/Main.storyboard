@@ -122,29 +122,25 @@ We acknowledge the use of imagery provided by services from NASA's Global Imager
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mw6-ZG-Uhn">
-                                <rect key="frame" x="87" y="384" width="240" height="128"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="7gs-VE-oLM"/>
-                                    <constraint firstAttribute="height" constant="128" id="PKJ-LJ-bSg"/>
-                                </constraints>
-                            </imageView>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" pitchEnabled="NO" showsBuildings="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XVg-aV-IX0">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="9Bx-Qm-0Tb" id="2cp-Vi-ENq"/>
+                                </connections>
+                            </mapView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2Bd-wJ-97N"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="Mw6-ZG-Uhn" firstAttribute="centerY" secondItem="EFT-FM-Tgc" secondAttribute="centerY" id="BGD-UY-vUH"/>
-                            <constraint firstItem="Mw6-ZG-Uhn" firstAttribute="centerX" secondItem="EFT-FM-Tgc" secondAttribute="centerX" id="rl6-60-rgO"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Map" id="M2v-Xx-nns"/>
                     <connections>
-                        <outlet property="mapImageView" destination="Mw6-ZG-Uhn" id="W4z-0L-r8o"/>
+                        <outlet property="mapView" destination="XVg-aV-IX0" id="DsE-s4-ntM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4KE-1O-UrA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-897" y="1158"/>
+            <point key="canvasLocation" x="-897.10144927536237" y="1157.8125"/>
         </scene>
         <!--Search-->
         <scene sceneID="PXi-Pa-0tK">
