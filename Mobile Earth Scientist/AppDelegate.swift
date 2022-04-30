@@ -6,14 +6,28 @@
 //
 
 import UIKit
+import GoogleMaps
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        var keys: NSDictionary?
+        if let path = Bundle.main.path(forResource: "keys", ofType: "plist") {
+            keys = NSDictionary(contentsOfFile: path)
+        }
+        else {
+            print("Missing keys.plist, where the Google Maps API key should be found! You need to create a \"keys.plist\" file and add a field called \"google_maps_api_key\" to it, with its value being the API key.")
+            return false
+        }
+        if let keysdict = keys {
+            GMSServices.provideAPIKey(keysdict["google_maps_api_key"] as! String)
+        }
+        else {
+            print("Missing Google Maps API key! You need to put that in keys.plist, labeling it as \"google_maps_api_key\".")
+            return false
+        }
         return true
     }
 

@@ -122,20 +122,18 @@ We acknowledge the use of imagery provided by services from NASA's Global Imager
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" pitchEnabled="NO" showsBuildings="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XVg-aV-IX0">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CzZ-Pa-7B3" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="88" width="414" height="686"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <outlet property="delegate" destination="9Bx-Qm-0Tb" id="2cp-Vi-ENq"/>
-                                </connections>
-                            </mapView>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2Bd-wJ-97N"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Map" id="M2v-Xx-nns"/>
                     <connections>
-                        <outlet property="mapView" destination="XVg-aV-IX0" id="DsE-s4-ntM"/>
+                        <outlet property="mapView" destination="CzZ-Pa-7B3" id="LMJ-7N-3kd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4KE-1O-UrA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

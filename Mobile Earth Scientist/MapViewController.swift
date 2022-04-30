@@ -7,7 +7,7 @@
 
 import UIKit
 import XMLCoder
-import MapKit
+import GoogleMaps
 
 // Errors that might appear when downloading GetCapabilities XML
 enum SerializationError: Error {
@@ -37,12 +37,25 @@ extension UIImageView {
     }
 }
 
-class MapViewController: UIViewController, MKMapViewDelegate {
+class MapViewController: UIViewController {
     
-    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var mapView: GMSMapView!
     var image: UIImage?
     var capabilities: WMS_Capabilities?
     let testLayer: String = "https://gibs.earthdata.nasa.gov/wms/epsg4326/best/wms.cgi?version=1.3.0&service=WMS&request=GetMap&format=image/jpeg&STYLE=default&bbox=-90,-180,90,180&CRS=EPSG:4326&HEIGHT=512&WIDTH=512&TIME=2021-11-25&layers=MODIS_Terra_SurfaceReflectance_Bands143"
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        
+        mapView.camera = GMSCameraPosition.camera(withLatitude: 0, longitude: 0, zoom: 1.0)
+        addWMSLayerOverlay(northeast: UIImage(named:"wms_northeast")!, northwest: UIImage(named:"wms_northwest")!, southeast: UIImage(named:"wms_southeast")!, southwest: UIImage(named:"wms_southwest")!)
+        
+        downloadXML {
+            print("XML download successful!")
+            print(self.capabilities?.capability.layerParent.layers[0].layers[0].style?.legendURL.onlineResource.url)
+        }
+    }
     
     // download the XML info from the API, as done in the class slides with JSON
     func downloadXML(completed: @escaping () -> ()) {
@@ -90,49 +103,42 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         return
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        mapView.delegate = self
-        // Do any additional setup after loading the view.
-        downloadXML {
-            print("XML download successful!")
-            print(self.capabilities?.capability.layerParent.layers[0].layers[0].style?.legendURL.onlineResource.url)
-        }
+    // MARK: - Map Functions
+    
+    // Add the four images representing the four quadrants of a layer to the map.
+    // Google Maps crashes if an overlay image's bounding box goes too wide,
+    // so for this project we use Northeast, Northwest, Southeast, Southwest quadrants to
+    // make up a full layer
+    func addWMSLayerOverlay(northeast: UIImage, northwest: UIImage, southeast: UIImage, southwest: UIImage) {
+        // These values come from https://nasa-gibs.github.io/gibs-api-docs/access-basics/#map-projections in the Web Mercator / "Google Projection" (EPSG:3857) section under "WGS84 Coordinates"
+        let minLatWGS84: CLLocationDegrees = -85.051129
+        let maxLatWGS84: CLLocationDegrees = 85.051129
+        let minLonWGS84: CLLocationDegrees = -180
+        let maxLonWGS84: CLLocationDegrees = 180
         
-        let location = CLLocationCoordinate2DMake(40.73085, -73.99750)
-        let regionRadius: CLLocationDistance = 5500
-        let coordinateRegion = MKCoordinateRegion(center: location, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
-        mapView.setRegion(coordinateRegion, animated: true)
-        let size = MKMapSize(width: 1000, height: 1000)
-        let wmsLayer = WMSLayer(midCoordinate: location, overlayBoundingMapRect: MKMapRect(origin: MKMapPoint(location), size: size))
-        let overlay = WMSLayerOverlay(wmsLayer: wmsLayer)
-        self.mapView.addOverlay(overlay)
-        //let diskOverlay: MKCircle = MKCircle.init(center: location, radius: 5000)
-        //mapView.addOverlay(diskOverlay)
+        let centerCorner = CLLocationCoordinate2D(latitude: 0, longitude: 0)
+        
+        // NORTHEAST
+        let northeastCorner = CLLocationCoordinate2D(latitude: maxLatWGS84, longitude: maxLonWGS84)
+        let northeastOverlay = GMSGroundOverlay(bounds:GMSCoordinateBounds(coordinate: centerCorner, coordinate: northeastCorner), icon: northeast)
+        northeastOverlay.map = self.mapView
+        
+        // NORTHWEST
+        let northwestCorner = CLLocationCoordinate2D(latitude: maxLatWGS84, longitude: minLonWGS84)
+        let northwestOverlay = GMSGroundOverlay(bounds:GMSCoordinateBounds(coordinate: centerCorner, coordinate: northwestCorner), icon: northwest)
+        northwestOverlay.map = self.mapView
+        
+        // SOUTHEAST
+        let southeastCorner = CLLocationCoordinate2D(latitude: minLatWGS84, longitude: maxLonWGS84)
+        let southeastOverlay = GMSGroundOverlay(bounds:GMSCoordinateBounds(coordinate: southeastCorner, coordinate: centerCorner), icon: southeast)
+        southeastOverlay.map = self.mapView
+        
+        // SOUTHWEST
+        let southwestCorner = CLLocationCoordinate2D(latitude: minLatWGS84, longitude: minLonWGS84)
+        let southwestOverlay = GMSGroundOverlay(bounds:GMSCoordinateBounds(coordinate: southwestCorner, coordinate: centerCorner), icon: southwest)
+        southwestOverlay.map = self.mapView
     }
     
-    // rendererFor causes "invalid library file": https://stackoverflow.com/a/72047451
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        print("YIGGITY")
-        if overlay is WMSLayerOverlay {
-            let img = UIImage(named: "wms")
-            return WMSLayerMapOverlayView(
-                overlay: overlay,
-                overlayImage: img!
-                )
-        }
-        return MKOverlayRenderer()
-    }
-    /*
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        if let overlay = overlay as? MKCircle {
-            let circleRenderer = MKCircleRenderer(circle: overlay)
-            circleRenderer.fillColor = UIColor.blue
-            return circleRenderer
-        }
-        else {
-           return MKOverlayRenderer(overlay: overlay)
-        }
-    }*/
+   
 }
 
