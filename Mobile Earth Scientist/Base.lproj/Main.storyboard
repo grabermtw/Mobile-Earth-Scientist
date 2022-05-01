@@ -105,14 +105,19 @@ We acknowledge the use of imagery provided by services from NASA's Global Imager
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CzZ-Pa-7B3" customClass="GMSMapView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CzZ-Pa-7B3" customClass="GMSMapView">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2Bd-wJ-97N"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="CzZ-Pa-7B3" firstAttribute="leading" secondItem="2Bd-wJ-97N" secondAttribute="leading" id="7EH-en-67O"/>
+                            <constraint firstItem="CzZ-Pa-7B3" firstAttribute="top" secondItem="2Bd-wJ-97N" secondAttribute="top" id="d9n-qe-XRh"/>
+                            <constraint firstItem="CzZ-Pa-7B3" firstAttribute="trailing" secondItem="2Bd-wJ-97N" secondAttribute="trailing" id="hmS-dT-K9Z"/>
+                            <constraint firstItem="CzZ-Pa-7B3" firstAttribute="bottom" secondItem="2Bd-wJ-97N" secondAttribute="bottom" id="tXS-Ge-EMD"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Map" id="M2v-Xx-nns"/>
                     <connections>

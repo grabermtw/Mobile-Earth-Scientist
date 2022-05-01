@@ -10,7 +10,7 @@
 import XMLCoder
 
 // Struct for decoding the XML returned by the WMS GetCapabilities request.
-// Implements Equatable so that equality can be tested
+// Everything here implements Equatable so that deep equality can be tested
 struct WMS_Capabilities: Codable, Equatable {
     static func == (lhs: WMS_Capabilities, rhs: WMS_Capabilities) -> Bool {
         return lhs.capability == rhs.capability
@@ -28,9 +28,9 @@ struct WMS_Capabilities: Codable, Equatable {
             
             struct LayerInfo: Codable, Equatable {
                 static func == (lhs: WMS_Capabilities.Capability.LayerParent.LayerInfo, rhs: WMS_Capabilities.Capability.LayerParent.LayerInfo) -> Bool {
-                    return (lhs.name == rhs.name) && (lhs.title == rhs.title) && (lhs.style == rhs.style)
+                    return (lhs.name == rhs.name) && (lhs.title == rhs.title) && (lhs.style == rhs.style) && (lhs.dimension == rhs.dimension)
                 }
-                
+        
                 struct Style: Codable, Equatable {
                     static func == (lhs: WMS_Capabilities.Capability.LayerParent.LayerInfo.Style, rhs: WMS_Capabilities.Capability.LayerParent.LayerInfo.Style) -> Bool {
                         return lhs.legendURL == rhs.legendURL
@@ -68,13 +68,34 @@ struct WMS_Capabilities: Codable, Equatable {
                         case legendURL = "LegendURL"
                     }
                 }
+                struct Dimension: Codable, Equatable {
+                    
+                    static func == (lhs: WMS_Capabilities.Capability.LayerParent.LayerInfo.Dimension, rhs: WMS_Capabilities.Capability.LayerParent.LayerInfo.Dimension) -> Bool {
+                        return (lhs.timeDefault == rhs.timeDefault) && (lhs.timeRange == rhs.timeRange)
+                    }
+                    
+                    var timeDefault: String
+                    var timeRange: String
+                    enum CodingKeys: String, CodingKey {
+                        case timeDefault = "default"
+                        case timeRange = ""
+                    }
+                    static func nodeEncoding(for key: CodingKey) -> XMLEncoder.NodeEncoding {
+                        switch key {
+                            case Dimension.CodingKeys.timeDefault: return .attribute
+                        default: return .element
+                        }
+                    }
+                }
                 var name: String
                 var title: String
                 var style: Style?
+                var dimension: Dimension?
                 enum CodingKeys: String, CodingKey {
                     case name = "Name"
                     case title = "Title"
                     case style = "Style"
+                    case dimension = "Dimension"
                 }
             }
             var name: String

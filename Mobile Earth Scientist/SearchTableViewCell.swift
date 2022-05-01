@@ -30,12 +30,12 @@ class SearchTableViewCell: UITableViewCell {
         if let wmsLayer = wmsLayer {
             if layerAdded {
                 GIBSData.myLayers.removeAll(where: {
-                    $0 == wmsLayer
+                    $0.wmsLayer == wmsLayer
                 })
                 setLayerAddedToggle(false)
             }
             else {
-                GIBSData.myLayers.append(wmsLayer)
+                GIBSData.myLayers.append(MESLayerInfo(wmsLayer: wmsLayer))
                 setLayerAddedToggle(true)
             }
         }

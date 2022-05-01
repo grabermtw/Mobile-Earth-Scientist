@@ -49,7 +49,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         cell.wmsLayer = filteredData![indexPath.row]
         // Inform the cell of whether its layer was already added to GIBS.myLayers
         if GIBSData.myLayers.contains(where: {
-            $0 == filteredData![indexPath.row]
+            $0.wmsLayer == filteredData![indexPath.row]
         }) {
             cell.setLayerAddedToggle(true)
         } else {

@@ -33,6 +33,7 @@
 		D4E6F957281DD22D00765895 /* GIBSData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E6F956281DD22D00765895 /* GIBSData.swift */; };
 		D4E6F959281E16EF00765895 /* MyLayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E6F958281E16EF00765895 /* MyLayersViewController.swift */; };
 		D4E6F95B281E177100765895 /* MyLayersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E6F95A281E177100765895 /* MyLayersTableViewCell.swift */; };
+		D4E6F95D281F02F400765895 /* MESLayerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E6F95C281F02F400765895 /* MESLayerInfo.swift */; };
 		D5289FFB27FDD40F0000BCC1 /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = D5289FFA27FDD40F0000BCC1 /* XMLCoder */; };
 		D5289FFD27FDF6940000BCC1 /* WMS_Capabilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5289FFC27FDF6940000BCC1 /* WMS_Capabilities.swift */; };
 		D5ADE4F527FB726E00D59475 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ADE4F427FB726E00D59475 /* AppDelegate.swift */; };
@@ -70,6 +71,7 @@
 		D4E6F956281DD22D00765895 /* GIBSData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIBSData.swift; sourceTree = "<group>"; };
 		D4E6F958281E16EF00765895 /* MyLayersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLayersViewController.swift; sourceTree = "<group>"; };
 		D4E6F95A281E177100765895 /* MyLayersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLayersTableViewCell.swift; sourceTree = "<group>"; };
+		D4E6F95C281F02F400765895 /* MESLayerInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MESLayerInfo.swift; sourceTree = "<group>"; };
 		D5289FFC27FDF6940000BCC1 /* WMS_Capabilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMS_Capabilities.swift; sourceTree = "<group>"; };
 		D5ADE4F127FB726E00D59475 /* Mobile Earth Scientist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mobile Earth Scientist.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5ADE4F427FB726E00D59475 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				D4E6F950281DB7B000765895 /* keys.plist */,
 				D4E6F954281DC5AD00765895 /* SearchTableViewCell.swift */,
 				D4E6F956281DD22D00765895 /* GIBSData.swift */,
+				D4E6F95C281F02F400765895 /* MESLayerInfo.swift */,
 			);
 			path = "Mobile Earth Scientist";
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 				D5ADE4F927FB726E00D59475 /* MapViewController.swift in Sources */,
 				D5289FFD27FDF6940000BCC1 /* WMS_Capabilities.swift in Sources */,
 				D4E6F955281DC5AD00765895 /* SearchTableViewCell.swift in Sources */,
+				D4E6F95D281F02F400765895 /* MESLayerInfo.swift in Sources */,
 				D4E6F959281E16EF00765895 /* MyLayersViewController.swift in Sources */,
 				D5ADE4F527FB726E00D59475 /* AppDelegate.swift in Sources */,
 				D4E6F957281DD22D00765895 /* GIBSData.swift in Sources */,

@@ -8,6 +8,12 @@
 import GoogleMaps
 import XMLCoder
 
+// Errors that might appear when downloading GetCapabilities XML
+enum SerializationError: Error {
+    case missing(String)
+    case invalid(String, Any)
+}
+
 // Everything in this struct is static
 // GIBSData means "Global Imagery Browse Services Data"
 struct GIBSData {
@@ -23,7 +29,8 @@ struct GIBSData {
     // This will hold all of the GetCapabilities data
     static var capabilities: WMS_Capabilities?
     
-    static var myLayers: [WMS_Capabilities.Capability.LayerParent.LayerInfo] = []
+    // This will hold the layers are present in the MyLayers table
+    static var myLayers: [MESLayerInfo] = []
     
     // download the XML info from the API, as done in the class slides with JSON
     static func downloadXML(completed: @escaping () -> ()) {

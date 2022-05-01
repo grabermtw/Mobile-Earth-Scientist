@@ -28,7 +28,7 @@ class MyLayersViewController: UIViewController, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyLayersCell")! as! MyLayersTableViewCell
-        cell.titleLabel?.text = GIBSData.myLayers[indexPath.row].title
+        cell.titleLabel?.text = GIBSData.myLayers[indexPath.row].wmsLayer.title
         return cell
     }
     
