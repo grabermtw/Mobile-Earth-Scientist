@@ -28,6 +28,11 @@
 		D4D7F2FB281CCBFA00544956 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D7F2FA281CCBFA00544956 /* SystemConfiguration.framework */; };
 		D4D7F2FD281CCC0100544956 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D7F2FC281CCC0100544956 /* UIKit.framework */; };
 		D4E6F951281DB7B000765895 /* keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = D4E6F950281DB7B000765895 /* keys.plist */; };
+		D4E6F953281DC23800765895 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E6F952281DC23800765895 /* SearchViewController.swift */; };
+		D4E6F955281DC5AD00765895 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E6F954281DC5AD00765895 /* SearchTableViewCell.swift */; };
+		D4E6F957281DD22D00765895 /* GIBSData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E6F956281DD22D00765895 /* GIBSData.swift */; };
+		D4E6F959281E16EF00765895 /* MyLayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E6F958281E16EF00765895 /* MyLayersViewController.swift */; };
+		D4E6F95B281E177100765895 /* MyLayersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E6F95A281E177100765895 /* MyLayersTableViewCell.swift */; };
 		D5289FFB27FDD40F0000BCC1 /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = D5289FFA27FDD40F0000BCC1 /* XMLCoder */; };
 		D5289FFD27FDF6940000BCC1 /* WMS_Capabilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5289FFC27FDF6940000BCC1 /* WMS_Capabilities.swift */; };
 		D5ADE4F527FB726E00D59475 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ADE4F427FB726E00D59475 /* AppDelegate.swift */; };
@@ -60,6 +65,11 @@
 		D4D7F2FA281CCBFA00544956 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D4D7F2FC281CCC0100544956 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D4E6F950281DB7B000765895 /* keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = keys.plist; sourceTree = "<group>"; };
+		D4E6F952281DC23800765895 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		D4E6F954281DC5AD00765895 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		D4E6F956281DD22D00765895 /* GIBSData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIBSData.swift; sourceTree = "<group>"; };
+		D4E6F958281E16EF00765895 /* MyLayersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLayersViewController.swift; sourceTree = "<group>"; };
+		D4E6F95A281E177100765895 /* MyLayersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLayersTableViewCell.swift; sourceTree = "<group>"; };
 		D5289FFC27FDF6940000BCC1 /* WMS_Capabilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMS_Capabilities.swift; sourceTree = "<group>"; };
 		D5ADE4F127FB726E00D59475 /* Mobile Earth Scientist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mobile Earth Scientist.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5ADE4F427FB726E00D59475 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -153,11 +163,16 @@
 				D5ADE4F627FB726E00D59475 /* SceneDelegate.swift */,
 				D5ADE4F827FB726E00D59475 /* MapViewController.swift */,
 				D5ADE4FA27FB726E00D59475 /* Main.storyboard */,
+				D4E6F95A281E177100765895 /* MyLayersTableViewCell.swift */,
+				D4E6F958281E16EF00765895 /* MyLayersViewController.swift */,
+				D4E6F952281DC23800765895 /* SearchViewController.swift */,
 				D5ADE4FD27FB727000D59475 /* Assets.xcassets */,
 				D5ADE4FF27FB727000D59475 /* LaunchScreen.storyboard */,
 				D5ADE50227FB727000D59475 /* Info.plist */,
 				D5289FFC27FDF6940000BCC1 /* WMS_Capabilities.swift */,
 				D4E6F950281DB7B000765895 /* keys.plist */,
+				D4E6F954281DC5AD00765895 /* SearchTableViewCell.swift */,
+				D4E6F956281DD22D00765895 /* GIBSData.swift */,
 			);
 			path = "Mobile Earth Scientist";
 			sourceTree = "<group>";
@@ -241,9 +256,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4E6F953281DC23800765895 /* SearchViewController.swift in Sources */,
+				D4E6F95B281E177100765895 /* MyLayersTableViewCell.swift in Sources */,
 				D5ADE4F927FB726E00D59475 /* MapViewController.swift in Sources */,
 				D5289FFD27FDF6940000BCC1 /* WMS_Capabilities.swift in Sources */,
+				D4E6F955281DC5AD00765895 /* SearchTableViewCell.swift in Sources */,
+				D4E6F959281E16EF00765895 /* MyLayersViewController.swift in Sources */,
 				D5ADE4F527FB726E00D59475 /* AppDelegate.swift in Sources */,
+				D4E6F957281DD22D00765895 /* GIBSData.swift in Sources */,
 				D5ADE4F727FB726E00D59475 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

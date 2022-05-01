@@ -7,61 +7,82 @@
 //  Giving the WMS_Capabilities struct its own file because it is enormous
 //
 
-import Foundation
 import XMLCoder
 
-let wmsCapabilitiesURL = "https://gibs.earthdata.nasa.gov/wms/epsg4326/best/wms.cgi?SERVICE=WMS&REQUEST=GetCapabilities&VERSION=1.3.0"
-
-// Struct for decoding the XML returned by the WMS GetCapabilities request
-struct WMS_Capabilities: Codable {
-    struct Capability: Codable {
-        struct LayerParent: Codable {
-            struct LayerType: Codable {
-                struct LayerInfo: Codable {
-                    struct Style: Codable {
-                        struct LegendURL: Codable {
-                            struct OnlineResource: Codable {
-                                var url: String
-                                enum CodingKeys: String, CodingKey {
-                                    case url = "xlink:href"
-                                }
-                                static func nodeEncoding(for key: CodingKey) -> XMLEncoder.NodeEncoding {
-                                    switch key {
-                                        case OnlineResource.CodingKeys.url: return .attribute
-                                    default: return .attribute
-                                    }
-                                }
+// Struct for decoding the XML returned by the WMS GetCapabilities request.
+// Implements Equatable so that equality can be tested
+struct WMS_Capabilities: Codable, Equatable {
+    static func == (lhs: WMS_Capabilities, rhs: WMS_Capabilities) -> Bool {
+        return lhs.capability == rhs.capability
+    }
+    
+    struct Capability: Codable, Equatable {
+        static func == (lhs: WMS_Capabilities.Capability, rhs: WMS_Capabilities.Capability) -> Bool {
+            return lhs.layerParent == rhs.layerParent
+        }
+        
+        struct LayerParent: Codable, Equatable {
+            static func == (lhs: WMS_Capabilities.Capability.LayerParent, rhs: WMS_Capabilities.Capability.LayerParent) -> Bool {
+                return (lhs.name == rhs.name) && (lhs.title == rhs.title) && (lhs.layers == rhs.layers)
+            }
+            
+            struct LayerInfo: Codable, Equatable {
+                static func == (lhs: WMS_Capabilities.Capability.LayerParent.LayerInfo, rhs: WMS_Capabilities.Capability.LayerParent.LayerInfo) -> Bool {
+                    return (lhs.name == rhs.name) && (lhs.title == rhs.title) && (lhs.style == rhs.style)
+                }
+                
+                struct Style: Codable, Equatable {
+                    static func == (lhs: WMS_Capabilities.Capability.LayerParent.LayerInfo.Style, rhs: WMS_Capabilities.Capability.LayerParent.LayerInfo.Style) -> Bool {
+                        return lhs.legendURL == rhs.legendURL
+                    }
+                    
+                    struct LegendURL: Codable, Equatable {
+                        static func == (lhs: WMS_Capabilities.Capability.LayerParent.LayerInfo.Style.LegendURL, rhs: WMS_Capabilities.Capability.LayerParent.LayerInfo.Style.LegendURL) -> Bool {
+                            return lhs.onlineResource == rhs.onlineResource
+                        }
+                        
+                        struct OnlineResource: Codable, Equatable {
+                            
+                            static func == (lhs: WMS_Capabilities.Capability.LayerParent.LayerInfo.Style.LegendURL.OnlineResource, rhs: WMS_Capabilities.Capability.LayerParent.LayerInfo.Style.LegendURL.OnlineResource) -> Bool {
+                                return lhs.url == rhs.url
                             }
-                            var onlineResource: OnlineResource
+                            
+                            var url: String
                             enum CodingKeys: String, CodingKey {
-                                case onlineResource = "OnlineResource"
+                                case url = "xlink:href"
+                            }
+                            static func nodeEncoding(for key: CodingKey) -> XMLEncoder.NodeEncoding {
+                                switch key {
+                                    case OnlineResource.CodingKeys.url: return .attribute
+                                default: return .attribute
+                                }
                             }
                         }
-                        var legendURL: LegendURL
+                        var onlineResource: OnlineResource
                         enum CodingKeys: String, CodingKey {
-                            case legendURL = "LegendURL"
+                            case onlineResource = "OnlineResource"
                         }
                     }
-                    var name: String
-                    var title: String
-                    var style: Style?
+                    var legendURL: LegendURL
                     enum CodingKeys: String, CodingKey {
-                        case name = "Name"
-                        case title = "Title"
-                        case style = "Style"
+                        case legendURL = "LegendURL"
                     }
                 }
                 var name: String
                 var title: String
-                var layers: [LayerInfo]
+                var style: Style?
                 enum CodingKeys: String, CodingKey {
                     case name = "Name"
                     case title = "Title"
-                    case layers = "Layer"
+                    case style = "Style"
                 }
             }
-            var layers: [LayerType]
+            var name: String
+            var title: String
+            var layers: [LayerInfo]
             enum CodingKeys: String, CodingKey {
+                case name = "Name"
+                case title = "Title"
                 case layers = "Layer"
             }
         }
