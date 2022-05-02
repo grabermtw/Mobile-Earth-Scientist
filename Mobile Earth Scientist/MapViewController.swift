@@ -142,13 +142,15 @@ class MapViewController: UIViewController, UITableViewDataSource {
         switch(layersWithLegends.count) {
         // hide the table if there are no legends to show
         case 0:
-            print("hmm how do i hide a table")
+            tableView.isHidden = true
         // disable scrolling if there is only 1 legend
         case 1:
             tableView.isScrollEnabled = false
+            tableView.isHidden = false
         // otherwise enable scrolling to see all the legends
         default:
             tableView.isScrollEnabled = true
+            tableView.isHidden = false
         }
         return layersWithLegends.count
     }

@@ -1,15 +1,16 @@
 //
-//  MyLayersViewController.swift
+//  FavoritesViewController.swift
 //  Mobile Earth Scientist
 //
-//  Created by mgraber on 4/30/22.
+//  Created by mgraber on 5/2/22.
 //
 
 import UIKit
 
-class MyLayersViewController: UIViewController, UITableViewDataSource {
-    
+class FavoritesViewController: UIViewController, UITableViewDataSource {
+
     @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -17,22 +18,19 @@ class MyLayersViewController: UIViewController, UITableViewDataSource {
         navigationItem.rightBarButtonItem = editButtonItem
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        tableView.reloadData()
-    }
+    // MARK: - Table functions
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return GIBSData.myLayers.count
+        return GIBSData.myFavorites.count
     }
     
-    // Populate the cells
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MyLayersCell")! as! MyLayersTableViewCell
-        cell.titleLabel?.text = GIBSData.myLayers[indexPath.row].wmsLayer.title
-        cell.layerToggleSwitch.isOn = GIBSData.myLayers[indexPath.row].enabled
-        cell.wmsLayer = GIBSData.myLayers[indexPath.row]
-        cell.setLayerFavoritedToggle(GIBSData.myFavorites.contains(where: {
-            $0.wmsLayer == GIBSData.myLayers[indexPath.row].wmsLayer
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FavoritesCell")! as! FavoritesTableViewCell
+        cell.titleLabel?.text = GIBSData.myFavorites[indexPath.row].wmsLayer.title
+        cell.wmsLayer = GIBSData.myFavorites[indexPath.row].wmsLayer
+        // Inform the cell of whether its layer was already added to GIBS.myLayers
+        cell.setLayerAddedToggle(GIBSData.myLayers.contains(where: {
+            $0.wmsLayer == GIBSData.myFavorites[indexPath.row].wmsLayer
         }))
         return cell
     }
@@ -51,7 +49,7 @@ class MyLayersViewController: UIViewController, UITableViewDataSource {
         if editingStyle == .delete {
             // Delete the row from the data source
             tableView.beginUpdates()
-            GIBSData.myLayers.remove(at: indexPath.row)
+            GIBSData.myFavorites.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.endUpdates()
         }
@@ -59,11 +57,10 @@ class MyLayersViewController: UIViewController, UITableViewDataSource {
     
     // Enable rearranging the layers!
     func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-        let movingRow = GIBSData.myLayers.remove(at: fromIndexPath.row)
-        GIBSData.myLayers.insert(movingRow, at: to.row)
+        let movingRow = GIBSData.myFavorites.remove(at: fromIndexPath.row)
+        GIBSData.myFavorites.insert(movingRow, at: to.row)
     }
     
-
     /*
     // MARK: - Navigation
 

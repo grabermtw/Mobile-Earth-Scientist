@@ -105,55 +105,68 @@ We acknowledge the use of imagery provided by services from NASA's Global Imager
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="YJ3-Dv-M97">
-                                <rect key="frame" x="0.0" y="683" width="414" height="130"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="130" id="7Er-YA-hoZ"/>
-                                </constraints>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LegendCell" rowHeight="99" id="1g2-vH-Zgv" customClass="LegendTableViewCell" customModule="Mobile_Earth_Scientist" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="99"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1g2-vH-Zgv" id="XhG-xr-gd9">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="99"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YmZ-Hh-1fb">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="WZE-1f-Bm2">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CzZ-Pa-7B3" customClass="GMSMapView">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="587"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="YJ3-Dv-M97">
+                                        <rect key="frame" x="0.0" y="595" width="414" height="130"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="130" id="7Er-YA-hoZ"/>
+                                        </constraints>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LegendCell" rowHeight="99" id="1g2-vH-Zgv" customClass="LegendTableViewCell" customModule="Mobile_Earth_Scientist" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="44.5" width="414" height="99"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1g2-vH-Zgv" id="XhG-xr-gd9">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="99"/>
-                                                </imageView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="YmZ-Hh-1fb" firstAttribute="top" secondItem="XhG-xr-gd9" secondAttribute="top" id="eZc-D2-Gn8"/>
-                                                <constraint firstAttribute="trailing" secondItem="YmZ-Hh-1fb" secondAttribute="trailing" id="rCl-Qc-wbt"/>
-                                                <constraint firstAttribute="bottom" secondItem="YmZ-Hh-1fb" secondAttribute="bottom" id="zCz-th-Lxm"/>
-                                                <constraint firstItem="YmZ-Hh-1fb" firstAttribute="leading" secondItem="XhG-xr-gd9" secondAttribute="leading" id="zj2-Wv-hBn"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YmZ-Hh-1fb">
+                                                            <rect key="frame" x="0.0" y="0.0" width="414" height="99"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="YmZ-Hh-1fb" firstAttribute="top" secondItem="XhG-xr-gd9" secondAttribute="top" id="eZc-D2-Gn8"/>
+                                                        <constraint firstAttribute="trailing" secondItem="YmZ-Hh-1fb" secondAttribute="trailing" id="rCl-Qc-wbt"/>
+                                                        <constraint firstAttribute="bottom" secondItem="YmZ-Hh-1fb" secondAttribute="bottom" id="zCz-th-Lxm"/>
+                                                        <constraint firstItem="YmZ-Hh-1fb" firstAttribute="leading" secondItem="XhG-xr-gd9" secondAttribute="leading" id="zj2-Wv-hBn"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="legendImageView" destination="YmZ-Hh-1fb" id="CDL-kz-XHy"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
                                         <connections>
-                                            <outlet property="legendImageView" destination="YmZ-Hh-1fb" id="CDL-kz-XHy"/>
+                                            <outlet property="dataSource" destination="9Bx-Qm-0Tb" id="n4n-rt-5KD"/>
                                         </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="9Bx-Qm-0Tb" id="n4n-rt-5KD"/>
-                                </connections>
-                            </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CzZ-Pa-7B3" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="88" width="414" height="587"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
+                                    </tableView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="CzZ-Pa-7B3" firstAttribute="top" secondItem="WZE-1f-Bm2" secondAttribute="top" id="1yt-Qn-lfN"/>
+                                    <constraint firstAttribute="trailing" secondItem="CzZ-Pa-7B3" secondAttribute="trailing" id="F2L-4c-Ogo"/>
+                                    <constraint firstAttribute="trailing" secondItem="CzZ-Pa-7B3" secondAttribute="trailing" id="HY5-5y-vgC"/>
+                                    <constraint firstAttribute="trailing" secondItem="YJ3-Dv-M97" secondAttribute="trailing" id="HxU-1f-JKl"/>
+                                    <constraint firstItem="YJ3-Dv-M97" firstAttribute="leading" secondItem="WZE-1f-Bm2" secondAttribute="leading" id="hO4-YJ-44f"/>
+                                    <constraint firstItem="CzZ-Pa-7B3" firstAttribute="top" secondItem="WZE-1f-Bm2" secondAttribute="top" id="klF-uo-gsb"/>
+                                    <constraint firstItem="CzZ-Pa-7B3" firstAttribute="leading" secondItem="WZE-1f-Bm2" secondAttribute="leading" id="lg1-yE-RSt"/>
+                                    <constraint firstItem="CzZ-Pa-7B3" firstAttribute="leading" secondItem="WZE-1f-Bm2" secondAttribute="leading" id="oJI-ph-DOe"/>
+                                    <constraint firstAttribute="bottom" secondItem="YJ3-Dv-M97" secondAttribute="bottom" id="xEo-wC-tHG"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2Bd-wJ-97N"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="CzZ-Pa-7B3" firstAttribute="leading" secondItem="2Bd-wJ-97N" secondAttribute="leading" id="7EH-en-67O"/>
-                            <constraint firstItem="YJ3-Dv-M97" firstAttribute="bottom" secondItem="2Bd-wJ-97N" secondAttribute="bottom" id="C31-6e-a5i"/>
-                            <constraint firstItem="YJ3-Dv-M97" firstAttribute="trailing" secondItem="2Bd-wJ-97N" secondAttribute="trailing" id="Fpb-4K-0Df"/>
-                            <constraint firstItem="YJ3-Dv-M97" firstAttribute="top" secondItem="CzZ-Pa-7B3" secondAttribute="bottom" constant="8" symbolic="YES" id="Hte-4d-Poi"/>
-                            <constraint firstItem="CzZ-Pa-7B3" firstAttribute="top" secondItem="2Bd-wJ-97N" secondAttribute="top" id="d9n-qe-XRh"/>
-                            <constraint firstItem="CzZ-Pa-7B3" firstAttribute="trailing" secondItem="2Bd-wJ-97N" secondAttribute="trailing" id="hmS-dT-K9Z"/>
-                            <constraint firstItem="YJ3-Dv-M97" firstAttribute="leading" secondItem="2Bd-wJ-97N" secondAttribute="leading" id="sAf-bh-4jE"/>
+                            <constraint firstItem="WZE-1f-Bm2" firstAttribute="trailing" secondItem="2Bd-wJ-97N" secondAttribute="trailing" id="7u5-Fo-tXy"/>
+                            <constraint firstItem="WZE-1f-Bm2" firstAttribute="leading" secondItem="2Bd-wJ-97N" secondAttribute="leading" id="b1m-2J-WGd"/>
+                            <constraint firstItem="WZE-1f-Bm2" firstAttribute="bottom" secondItem="2Bd-wJ-97N" secondAttribute="bottom" id="cLP-xs-Nl2"/>
+                            <constraint firstItem="WZE-1f-Bm2" firstAttribute="top" secondItem="2Bd-wJ-97N" secondAttribute="top" id="nfk-1R-aeI"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Map" id="M2v-Xx-nns"/>
@@ -283,11 +296,11 @@ We acknowledge the use of imagery provided by services from NASA's Global Imager
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="86"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Layer Title" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bub-nE-ggD">
-                                                    <rect key="frame" x="20" y="0.0" width="250" height="86"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Layer Title" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bub-nE-ggD">
+                                                    <rect key="frame" x="20" y="0.0" width="79" height="86"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="230" id="4kL-E7-ms7"/>
                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="86" id="TVq-9g-gL3"/>
-                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="250" id="Y0a-Ql-HX2"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -299,16 +312,30 @@ We acknowledge the use of imagery provided by services from NASA's Global Imager
                                                         <action selector="switchToggled:" destination="AQM-yn-FCe" eventType="valueChanged" id="fh3-KS-ptX"/>
                                                     </connections>
                                                 </switch>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pc9-hE-aNr">
+                                                    <rect key="frame" x="288" y="27.5" width="35" height="31"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="35" id="pN6-iA-764"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="toggleLayerPressed:" destination="AQM-yn-FCe" eventType="touchUpInside" id="bwi-nt-Vt0"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="bub-nE-ggD" secondAttribute="bottom" id="3wa-8L-Qlt"/>
                                                 <constraint firstItem="bub-nE-ggD" firstAttribute="top" secondItem="Rpz-mY-cne" secondAttribute="top" id="6oC-ql-iWQ"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="r15-GY-aMI" secondAttribute="trailing" constant="12" id="70R-T3-0hi"/>
                                                 <constraint firstItem="bub-nE-ggD" firstAttribute="leading" secondItem="Rpz-mY-cne" secondAttribute="leading" constant="20" symbolic="YES" id="PkZ-i8-FhM"/>
+                                                <constraint firstItem="Pc9-hE-aNr" firstAttribute="centerY" secondItem="Rpz-mY-cne" secondAttribute="centerY" id="Q6Z-z2-DSX"/>
                                                 <constraint firstItem="r15-GY-aMI" firstAttribute="centerY" secondItem="Rpz-mY-cne" secondAttribute="centerY" id="SdS-rg-kFi"/>
+                                                <constraint firstItem="r15-GY-aMI" firstAttribute="leading" secondItem="Pc9-hE-aNr" secondAttribute="trailing" constant="10" id="zi6-YV-fiI"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="layerFavoritedButton" destination="Pc9-hE-aNr" id="xmC-CB-Paf"/>
                                             <outlet property="layerToggleSwitch" destination="r15-GY-aMI" id="tX6-xw-7tC"/>
                                             <outlet property="titleLabel" destination="bub-nE-ggD" id="Ew1-5j-dFB"/>
                                         </connections>
@@ -329,7 +356,11 @@ We acknowledge the use of imagery provided by services from NASA's Global Imager
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="My Layers" id="I0L-P5-Kws">
-                        <barButtonItem key="leftBarButtonItem" title="Favorites" id="eTf-tp-bSc"/>
+                        <barButtonItem key="leftBarButtonItem" title="Favorites" id="eTf-tp-bSc">
+                            <connections>
+                                <segue destination="569-i8-zBb" kind="show" id="kbt-9F-9dU"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="RkF-CG-nOm" id="RI6-wh-z6M"/>
@@ -359,8 +390,87 @@ We acknowledge the use of imagery provided by services from NASA's Global Imager
             </objects>
             <point key="canvasLocation" x="709" y="463"/>
         </scene>
+        <!--Favorites-->
+        <scene sceneID="ZPq-aq-fWq">
+            <objects>
+                <viewController id="569-i8-zBb" customClass="FavoritesViewController" customModule="Mobile_Earth_Scientist" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Lit-uT-ENd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1DB-CL-LZB">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FavoritesCell" rowHeight="86" id="KvQ-oD-kSM" customClass="FavoritesTableViewCell" customModule="Mobile_Earth_Scientist" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="86"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KvQ-oD-kSM" id="O5S-gs-ieq">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="86"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Layer Title" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5aL-4U-1SG">
+                                                    <rect key="frame" x="20" y="0.0" width="250" height="86"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="250" id="8KG-Ch-nas"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="86" id="nbe-Rb-z3C"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4j7-oG-ZpK">
+                                                    <rect key="frame" x="359" y="27.5" width="35" height="31"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="35" id="lpd-Wt-wfX"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="toggleLayerPressed:" destination="KvQ-oD-kSM" eventType="touchUpInside" id="BgF-no-k4q"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="5aL-4U-1SG" firstAttribute="top" secondItem="O5S-gs-ieq" secondAttribute="top" id="9Bx-80-lFZ"/>
+                                                <constraint firstItem="5aL-4U-1SG" firstAttribute="leading" secondItem="O5S-gs-ieq" secondAttribute="leading" constant="20" symbolic="YES" id="EWg-Pj-ZYp"/>
+                                                <constraint firstAttribute="bottom" secondItem="5aL-4U-1SG" secondAttribute="bottom" id="HhK-03-KqE"/>
+                                                <constraint firstItem="4j7-oG-ZpK" firstAttribute="centerY" secondItem="O5S-gs-ieq" secondAttribute="centerY" id="JyM-ZF-g7T"/>
+                                                <constraint firstItem="4j7-oG-ZpK" firstAttribute="trailing" secondItem="O5S-gs-ieq" secondAttribute="trailingMargin" id="x5P-cd-31V"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="addLayerButton" destination="4j7-oG-ZpK" id="KDq-Wh-jeM"/>
+                                            <outlet property="titleLabel" destination="5aL-4U-1SG" id="lWF-3T-mS0"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="569-i8-zBb" id="Mgm-iu-7uU"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="zkN-6Q-vxG"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="1DB-CL-LZB" firstAttribute="leading" secondItem="zkN-6Q-vxG" secondAttribute="leading" id="4th-Dr-CRg"/>
+                            <constraint firstItem="1DB-CL-LZB" firstAttribute="bottom" secondItem="zkN-6Q-vxG" secondAttribute="bottom" id="DWd-ju-7me"/>
+                            <constraint firstItem="1DB-CL-LZB" firstAttribute="top" secondItem="zkN-6Q-vxG" secondAttribute="top" id="tVm-dW-yTE"/>
+                            <constraint firstItem="1DB-CL-LZB" firstAttribute="trailing" secondItem="zkN-6Q-vxG" secondAttribute="trailing" id="xye-ol-w9v"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Favorites" id="17Y-g0-lb0"/>
+                    <connections>
+                        <outlet property="tableView" destination="1DB-CL-LZB" id="c9m-Lb-EZN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q4C-y1-Nmz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-110" y="1875"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="heart" catalog="system" width="128" height="109"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

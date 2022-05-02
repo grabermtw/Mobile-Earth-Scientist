@@ -35,6 +35,9 @@
 		D4E6F95B281E177100765895 /* MyLayersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E6F95A281E177100765895 /* MyLayersTableViewCell.swift */; };
 		D4E6F95D281F02F400765895 /* MESLayerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E6F95C281F02F400765895 /* MESLayerInfo.swift */; };
 		D4F05796281F58F800F19D1B /* LegendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F05795281F58F800F19D1B /* LegendTableViewCell.swift */; };
+		D4F057982820183600F19D1B /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F057972820183600F19D1B /* FavoritesViewController.swift */; };
+		D4F0579A2820188400F19D1B /* FavoritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F057992820188400F19D1B /* FavoritesTableViewCell.swift */; };
+		D4F0579D2820266C00F19D1B /* MobileEarthScientistModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D4F0579B2820266C00F19D1B /* MobileEarthScientistModel.xcdatamodeld */; };
 		D5289FFB27FDD40F0000BCC1 /* XMLCoder in Frameworks */ = {isa = PBXBuildFile; productRef = D5289FFA27FDD40F0000BCC1 /* XMLCoder */; };
 		D5289FFD27FDF6940000BCC1 /* WMS_Capabilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5289FFC27FDF6940000BCC1 /* WMS_Capabilities.swift */; };
 		D5ADE4F527FB726E00D59475 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5ADE4F427FB726E00D59475 /* AppDelegate.swift */; };
@@ -74,6 +77,9 @@
 		D4E6F95A281E177100765895 /* MyLayersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLayersTableViewCell.swift; sourceTree = "<group>"; };
 		D4E6F95C281F02F400765895 /* MESLayerInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MESLayerInfo.swift; sourceTree = "<group>"; };
 		D4F05795281F58F800F19D1B /* LegendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegendTableViewCell.swift; sourceTree = "<group>"; };
+		D4F057972820183600F19D1B /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		D4F057992820188400F19D1B /* FavoritesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewCell.swift; sourceTree = "<group>"; };
+		D4F0579C2820266C00F19D1B /* FavoritesModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavoritesModel.xcdatamodel; sourceTree = "<group>"; };
 		D5289FFC27FDF6940000BCC1 /* WMS_Capabilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WMS_Capabilities.swift; sourceTree = "<group>"; };
 		D5ADE4F127FB726E00D59475 /* Mobile Earth Scientist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mobile Earth Scientist.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5ADE4F427FB726E00D59475 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -167,8 +173,11 @@
 				D5ADE4F627FB726E00D59475 /* SceneDelegate.swift */,
 				D5ADE4F827FB726E00D59475 /* MapViewController.swift */,
 				D4F05795281F58F800F19D1B /* LegendTableViewCell.swift */,
+				D4F057992820188400F19D1B /* FavoritesTableViewCell.swift */,
 				D5ADE4FA27FB726E00D59475 /* Main.storyboard */,
+				D4F057972820183600F19D1B /* FavoritesViewController.swift */,
 				D4E6F95A281E177100765895 /* MyLayersTableViewCell.swift */,
+				D4F0579B2820266C00F19D1B /* MobileEarthScientistModel.xcdatamodeld */,
 				D4E6F958281E16EF00765895 /* MyLayersViewController.swift */,
 				D4E6F952281DC23800765895 /* SearchViewController.swift */,
 				D5ADE4FD27FB727000D59475 /* Assets.xcassets */,
@@ -271,7 +280,10 @@
 				D4E6F959281E16EF00765895 /* MyLayersViewController.swift in Sources */,
 				D5ADE4F527FB726E00D59475 /* AppDelegate.swift in Sources */,
 				D4F05796281F58F800F19D1B /* LegendTableViewCell.swift in Sources */,
+				D4F0579D2820266C00F19D1B /* MobileEarthScientistModel.xcdatamodeld in Sources */,
+				D4F0579A2820188400F19D1B /* FavoritesTableViewCell.swift in Sources */,
 				D4E6F957281DD22D00765895 /* GIBSData.swift in Sources */,
+				D4F057982820183600F19D1B /* FavoritesViewController.swift in Sources */,
 				D5ADE4F727FB726E00D59475 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -519,6 +531,19 @@
 			productName = XMLCoder;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		D4F0579B2820266C00F19D1B /* MobileEarthScientistModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D4F0579C2820266C00F19D1B /* FavoritesModel.xcdatamodel */,
+			);
+			currentVersion = D4F0579C2820266C00F19D1B /* FavoritesModel.xcdatamodel */;
+			path = MobileEarthScientistModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = D5ADE4E927FB726E00D59475 /* Project object */;
 }

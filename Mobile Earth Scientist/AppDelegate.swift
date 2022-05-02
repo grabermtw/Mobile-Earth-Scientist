@@ -7,10 +7,24 @@
 
 import UIKit
 import GoogleMaps
+import CoreData
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
+    // from the CoreData documentation: https://developer.apple.com/documentation/coredata/setting_up_a_core_data_stack
+    lazy var persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "MobileEarthScientistModel")
+        container.loadPersistentStores { description, error in
+            if let error = error {
+                fatalError("Unable to load persistent stores: \(error)")
+            }
+        }
+        // prevent duplicates from being saved
+        container.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
+        return container
+    }()
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         var keys: NSDictionary?
@@ -19,15 +33,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         else {
             print("Missing keys.plist, where the Google Maps API key should be found! You need to create a \"keys.plist\" file and add a field called \"google_maps_api_key\" to it, with its value being the API key.")
-            return false
         }
         if let keysdict = keys {
             GMSServices.provideAPIKey(keysdict["google_maps_api_key"] as! String)
         }
         else {
             print("Missing Google Maps API key! You need to put that in keys.plist, labeling it as \"google_maps_api_key\".")
-            return false
         }
+        // Assign CoreData container
+        GIBSData.container = persistentContainer
+        
         return true
     }
 
