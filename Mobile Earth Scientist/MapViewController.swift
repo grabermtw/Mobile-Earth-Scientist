@@ -32,12 +32,8 @@ class MapViewController: UIViewController, UITableViewDataSource {
         // demo layer, temporary
         //addWMSLayerOverlay(northeast: UIImage(named:"wms_northeast")!, northwest: UIImage(named:"wms_northwest")!, southeast: UIImage(named:"wms_southeast")!, southwest: UIImage(named:"wms_southwest")!)
         
-        GIBSData.downloadXML {
-            print("XML download successful!")
-            print(GIBSData.capabilities?.capability.layerParent.layers[0].style?.legendURL.onlineResource.url)
-            print(GIBSData.capabilities?.capability.layerParent.layers[2].dimension?.timeDefault)
-            print(GIBSData.capabilities?.capability.layerParent.layers[2].dimension?.timeRange)
-        }
+        
+        performSegue(withIdentifier: "WelcomeSegue", sender: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,7 +63,7 @@ class MapViewController: UIViewController, UITableViewDataSource {
             return
         }
         // otherwise, download
-        let url = URL(string: urlLink)
+        let url = URL(string: urlLink.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)
         URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
             if let err = error {
                 print(err)

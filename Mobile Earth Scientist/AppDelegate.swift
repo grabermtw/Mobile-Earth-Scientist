@@ -12,6 +12,7 @@ import CoreData
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
+    // Set up CoreData container
     // from the CoreData documentation: https://developer.apple.com/documentation/coredata/setting_up_a_core_data_stack
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "MobileEarthScientistModel")
@@ -27,6 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // Load Google Maps API key
         var keys: NSDictionary?
         if let path = Bundle.main.path(forResource: "keys", ofType: "plist") {
             keys = NSDictionary(contentsOfFile: path)
@@ -40,8 +43,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         else {
             print("Missing Google Maps API key! You need to put that in keys.plist, labeling it as \"google_maps_api_key\".")
         }
+        
         // Assign CoreData container
         GIBSData.container = persistentContainer
+        
+        // Download the GetCapabilities XML
+        GIBSData.downloadXML {
+            print("XML download successful!")
+        }
         
         return true
     }

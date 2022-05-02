@@ -8,29 +8,34 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Welcome View Controller-->
         <scene sceneID="wVv-cS-vX7">
             <objects>
-                <viewController id="Hpd-aO-gAC" sceneMemberID="viewController">
+                <viewController id="Hpd-aO-gAC" customClass="WelcomeViewController" customModule="Mobile_Earth_Scientist" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="a4j-7N-lb4">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mobile Earth Scientist" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vhc-Q4-TDF">
-                                <rect key="frame" x="62" y="124" width="290.5" height="37"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
-                                <nil key="textColor"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="suomi" translatesAutoresizingMaskIntoConstraints="NO" id="sG6-Ls-a9u">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mobile Earth Scientist  " textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vhc-Q4-TDF">
+                                <rect key="frame" x="47" y="124" width="320" height="37"/>
+                                <color key="backgroundColor" red="0.95287906950000001" green="0.95165794110000002" blue="0.97298801310000005" alpha="0.72344515970000001" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="31"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vxo-jC-bBo">
-                                <rect key="frame" x="133" y="81" width="148" height="35"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Welcome to " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vxo-jC-bBo">
+                                <rect key="frame" x="123.5" y="81" width="167.5" height="35"/>
+                                <color key="backgroundColor" red="0.95287906950000001" green="0.95165794110000002" blue="0.97298801310000005" alpha="0.72344515970000001" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="29"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7cC-TR-cM4">
-                                <rect key="frame" x="40.5" y="442" width="333" height="351"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <rect key="frame" x="40.5" y="422" width="333" height="351"/>
+                                <color key="backgroundColor" red="0.95287906954448631" green="0.95165794111908242" blue="0.97298801306522253" alpha="0.85433606280396313" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="351" id="Td2-FL-Z3Z"/>
                                     <constraint firstAttribute="width" constant="333" id="nug-2G-gph"/>
@@ -40,26 +45,45 @@
 Search through hundreds of data products that are updated daily!
 
 We acknowledge the use of imagery provided by services from NASA's Global Imagery Browse Services (GIBS), part of NASA's Earth Observing System Data and Information System (EOSDIS).</string>
-                                <color key="textColor" systemColor="labelColor"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Created by Matt Graber " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sCo-kU-k3z">
+                                <rect key="frame" x="104.5" y="169" width="205" height="23"/>
+                                <color key="backgroundColor" red="0.95287906950000001" green="0.95165794110000002" blue="0.97298801310000005" alpha="0.72344515970000001" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="19"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Syj-ZJ-GtY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="sG6-Ls-a9u" firstAttribute="top" secondItem="a4j-7N-lb4" secondAttribute="top" id="2m0-Gs-b1f"/>
+                            <constraint firstItem="sG6-Ls-a9u" firstAttribute="bottom" secondItem="Syj-ZJ-GtY" secondAttribute="bottom" id="5HD-Ik-1fb"/>
                             <constraint firstItem="Vxo-jC-bBo" firstAttribute="centerX" secondItem="a4j-7N-lb4" secondAttribute="centerX" id="8Ba-gx-rFO"/>
+                            <constraint firstItem="sG6-Ls-a9u" firstAttribute="leading" secondItem="Syj-ZJ-GtY" secondAttribute="leading" id="8QC-B7-m5B"/>
+                            <constraint firstItem="sCo-kU-k3z" firstAttribute="centerX" secondItem="a4j-7N-lb4" secondAttribute="centerX" id="TzH-qS-Fvm"/>
                             <constraint firstItem="vhc-Q4-TDF" firstAttribute="top" secondItem="Vxo-jC-bBo" secondAttribute="bottom" constant="8" symbolic="YES" id="eDJ-O8-tNF"/>
                             <constraint firstItem="7cC-TR-cM4" firstAttribute="centerX" secondItem="a4j-7N-lb4" secondAttribute="centerX" id="eWL-db-97v"/>
                             <constraint firstItem="Syj-ZJ-GtY" firstAttribute="bottom" secondItem="7cC-TR-cM4" secondAttribute="bottom" constant="69" id="ha1-kr-oF8"/>
                             <constraint firstItem="Vxo-jC-bBo" firstAttribute="top" secondItem="Syj-ZJ-GtY" secondAttribute="top" constant="37" id="hdf-22-Qe3"/>
+                            <constraint firstItem="sG6-Ls-a9u" firstAttribute="trailing" secondItem="Syj-ZJ-GtY" secondAttribute="trailing" id="nqe-ga-pjd"/>
+                            <constraint firstItem="sCo-kU-k3z" firstAttribute="top" secondItem="vhc-Q4-TDF" secondAttribute="bottom" constant="8" symbolic="YES" id="pqJ-xB-5Ln"/>
                             <constraint firstItem="vhc-Q4-TDF" firstAttribute="centerX" secondItem="a4j-7N-lb4" secondAttribute="centerX" id="tBn-B5-Caj"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="createdByLabel" destination="sCo-kU-k3z" id="Lqz-wE-yjv"/>
+                        <outlet property="textView" destination="7cC-TR-cM4" id="tyG-tI-25v"/>
+                        <outlet property="titleLabel" destination="vhc-Q4-TDF" id="y5W-Wd-jBF"/>
+                        <outlet property="welcomeLabel" destination="Vxo-jC-bBo" id="Zlo-Ed-L6I"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CmH-F3-wO1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1063.768115942029" y="-291.96428571428572"/>
+            <point key="canvasLocation" x="-897.10144927536237" y="1875"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="hYA-J3-7wQ">
@@ -78,7 +102,7 @@ We acknowledge the use of imagery provided by services from NASA's Global Imager
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9rC-qo-Dvf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-254" y="-292"/>
+            <point key="canvasLocation" x="-110" y="-310"/>
         </scene>
         <!--Map-->
         <scene sceneID="6l8-J7-wET">
@@ -169,7 +193,15 @@ We acknowledge the use of imagery provided by services from NASA's Global Imager
                             <constraint firstItem="WZE-1f-Bm2" firstAttribute="top" secondItem="2Bd-wJ-97N" secondAttribute="top" id="nfk-1R-aeI"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Map" id="M2v-Xx-nns"/>
+                    <navigationItem key="navigationItem" title="Map" id="M2v-Xx-nns">
+                        <barButtonItem key="rightBarButtonItem" title="Info" id="0T7-v0-0R9">
+                            <connections>
+                                <segue destination="Hpd-aO-gAC" kind="popoverPresentation" identifier="WelcomeSegue" popoverAnchorBarButtonItem="0T7-v0-0R9" id="EAG-pW-n1O">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="legendsTableView" destination="YJ3-Dv-M97" id="CRW-LP-UP6"/>
                         <outlet property="mapView" destination="CzZ-Pa-7B3" id="LMJ-7N-3kd"/>
@@ -472,9 +504,7 @@ We acknowledge the use of imagery provided by services from NASA's Global Imager
     <resources>
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="plus" catalog="system" width="128" height="113"/>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <image name="suomi" width="1116" height="751"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
