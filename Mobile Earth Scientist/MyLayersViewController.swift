@@ -18,7 +18,6 @@ class MyLayersViewController: UIViewController, UITableViewDataSource {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print(GIBSData.myLayers)
         tableView.reloadData()
     }
     
@@ -26,9 +25,12 @@ class MyLayersViewController: UIViewController, UITableViewDataSource {
         return GIBSData.myLayers.count
     }
     
+    // Populate the cells
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyLayersCell")! as! MyLayersTableViewCell
         cell.titleLabel?.text = GIBSData.myLayers[indexPath.row].wmsLayer.title
+        cell.layerToggleSwitch.isOn = GIBSData.myLayers[indexPath.row].enabled
+        cell.layerInfo = GIBSData.myLayers[indexPath.row]
         return cell
     }
     

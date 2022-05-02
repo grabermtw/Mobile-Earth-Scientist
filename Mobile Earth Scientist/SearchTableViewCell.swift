@@ -11,6 +11,7 @@ class SearchTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var addLayerButton: UIButton!
+    
     var wmsLayer: WMS_Capabilities.Capability.LayerParent.LayerInfo?
     var layerAdded: Bool = false
     

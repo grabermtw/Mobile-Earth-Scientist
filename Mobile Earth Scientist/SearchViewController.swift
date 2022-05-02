@@ -73,7 +73,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         if let searchText = searchController.searchBar.text {
             filteredData = searchText.isEmpty ? GIBSData.capabilities?.capability.layerParent.layers : GIBSData.capabilities?.capability.layerParent.layers.filter({
                 (layer: WMS_Capabilities.Capability.LayerParent.LayerInfo) -> Bool in
-                return layer.title.contains(searchText)
+                return layer.title.lowercased().contains(searchText.lowercased())
             })
 
             tableView.reloadData()

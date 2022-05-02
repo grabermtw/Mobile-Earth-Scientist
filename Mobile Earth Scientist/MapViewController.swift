@@ -10,18 +10,16 @@ import XMLCoder
 import GoogleMaps
 
 // Used for holding the four images associated with each layer
-struct MapLayerQuadrants {
-    var northeast: UIImage?
-    var northwest: UIImage?
-    var southeast: UIImage?
-    var southwest: UIImage?
+struct MapLayer {
+    var imgs: [String: UIImage] = [:]
 }
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, UITableViewDataSource {
     
     let layerImgCache = NSCache<NSString, AnyObject>()
-    var currentMapLayers: [MapLayerQuadrants] = []
+    var currentMapLayers: [MapLayer] = []
     
+    @IBOutlet weak var legendsTableView: UITableView!
     @IBOutlet weak var mapView: GMSMapView!
     var image: UIImage?
     var capabilities: WMS_Capabilities?
@@ -42,18 +40,20 @@ class MapViewController: UIViewController {
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         mapView.clear()
+        currentMapLayers = []
         for layerInfo in GIBSData.myLayers.reversed() where layerInfo.enabled {
             addWMSLayerOverlay(layerInfo: layerInfo)
         }
+        legendsTableView.reloadData()
     }
     
     // MARK: - Map Functions
     
     // From the slides
     // Used for downloading the layer quadrant images
-    func downloadQuadrantUsingCacheWithLink(urlLink: String, layerIndex: Int, quadrant: String, completion: @escaping () -> Void) {
+    func downloadImageUsingCacheWithLink(urlLink: String, layerIndex: Int, imagePurpose: String, completion: @escaping () -> Void) {
         
         if urlLink.isEmpty {
             print("Link is empty")
@@ -62,18 +62,7 @@ class MapViewController: UIViewController {
 
         // check cache first
         if let cachedImage = self.layerImgCache.object(forKey: urlLink as NSString) as? UIImage {
-            switch(quadrant) {
-            case "northeast":
-                self.currentMapLayers[layerIndex].northeast = cachedImage
-            case "northwest":
-                self.currentMapLayers[layerIndex].northwest = cachedImage
-            case "southeast":
-                self.currentMapLayers[layerIndex].southeast = cachedImage
-            case "southwest":
-                self.currentMapLayers[layerIndex].southwest = cachedImage
-            default:
-                print("Invalid quadrant: \(quadrant)")
-            }
+            self.currentMapLayers[layerIndex].imgs[imagePurpose] = cachedImage
             completion()
             return
         }
@@ -87,23 +76,10 @@ class MapViewController: UIViewController {
             DispatchQueue.main.async {
                 if let newImage = UIImage(data: data!) {
                     self.layerImgCache.setObject(newImage, forKey: urlLink as NSString)
-                    switch(quadrant) {
-                    case "northeast":
-                        self.currentMapLayers[layerIndex].northeast = newImage
-                    case "northwest":
-                        self.currentMapLayers[layerIndex].northwest = newImage
-                    case "southeast":
-                        self.currentMapLayers[layerIndex].southeast = newImage
-                    case "southwest":
-                        self.currentMapLayers[layerIndex].southwest = newImage
-                    default:
-                        print("Invalid quadrant: \(quadrant)")
-                    }
-                    
+                    self.currentMapLayers[layerIndex].imgs[imagePurpose] = newImage
                 }
                 completion()
             }
-            
         }).resume()
     }
     
@@ -115,41 +91,78 @@ class MapViewController: UIViewController {
        
         // Add a new entry in the currentMapLayers list that will contain the new images
         let layerIndex = currentMapLayers.count
-        currentMapLayers.append(MapLayerQuadrants())
+        currentMapLayers.append(MapLayer())
         
         let centerCorner = CLLocationCoordinate2D(latitude: 0, longitude: 0)
         
         // NORTHEAST
         // download quadrant image
-        print(layerInfo.northeastURL)
-        downloadQuadrantUsingCacheWithLink(urlLink: layerInfo.northeastURL, layerIndex: layerIndex, quadrant: "northeast", completion: { () -> Void in
+        downloadImageUsingCacheWithLink(urlLink: layerInfo.northeastURL, layerIndex: layerIndex, imagePurpose: "northeast", completion: { () -> Void in
             let northeastCorner = CLLocationCoordinate2D(latitude: GIBSData.maxLatWGS84, longitude: GIBSData.maxLonWGS84)
-            let northeastOverlay = GMSGroundOverlay(bounds:GMSCoordinateBounds(coordinate: centerCorner, coordinate: northeastCorner), icon: self.currentMapLayers[layerIndex].northeast)
+            let northeastOverlay = GMSGroundOverlay(bounds:GMSCoordinateBounds(coordinate: centerCorner, coordinate: northeastCorner), icon: self.currentMapLayers[layerIndex].imgs["northeast"])
             northeastOverlay.map = self.mapView
         })
         
         // NORTHWEST
-        downloadQuadrantUsingCacheWithLink(urlLink: layerInfo.northwestURL, layerIndex: layerIndex, quadrant: "northwest", completion: { () -> Void in
+        downloadImageUsingCacheWithLink(urlLink: layerInfo.northwestURL, layerIndex: layerIndex, imagePurpose: "northwest", completion: { () -> Void in
             let northwestCorner = CLLocationCoordinate2D(latitude: GIBSData.maxLatWGS84, longitude: GIBSData.minLonWGS84)
-            let northwestOverlay = GMSGroundOverlay(bounds:GMSCoordinateBounds(coordinate: centerCorner, coordinate: northwestCorner), icon: self.currentMapLayers[layerIndex].northwest)
+            let northwestOverlay = GMSGroundOverlay(bounds:GMSCoordinateBounds(coordinate: centerCorner, coordinate: northwestCorner), icon: self.currentMapLayers[layerIndex].imgs["northwest"])
             northwestOverlay.map = self.mapView
         })
         
         // SOUTHEAST
-        downloadQuadrantUsingCacheWithLink(urlLink: layerInfo.southeastURL, layerIndex: layerIndex, quadrant: "southeast", completion: { () -> Void in
+        downloadImageUsingCacheWithLink(urlLink: layerInfo.southeastURL, layerIndex: layerIndex, imagePurpose: "southeast", completion: { () -> Void in
             let southeastCorner = CLLocationCoordinate2D(latitude: GIBSData.minLatWGS84, longitude: GIBSData.maxLonWGS84)
-            let southeastOverlay = GMSGroundOverlay(bounds:GMSCoordinateBounds(coordinate: southeastCorner, coordinate: centerCorner), icon: self.currentMapLayers[layerIndex].southeast)
+            let southeastOverlay = GMSGroundOverlay(bounds:GMSCoordinateBounds(coordinate: southeastCorner, coordinate: centerCorner), icon: self.currentMapLayers[layerIndex].imgs["southeast"])
             southeastOverlay.map = self.mapView
         })
         
         // SOUTHWEST
-        downloadQuadrantUsingCacheWithLink(urlLink: layerInfo.southwestURL, layerIndex: layerIndex, quadrant: "southwest", completion: { () -> Void in
+        downloadImageUsingCacheWithLink(urlLink: layerInfo.southwestURL, layerIndex: layerIndex, imagePurpose: "southwest", completion: { () -> Void in
             let southwestCorner = CLLocationCoordinate2D(latitude: GIBSData.minLatWGS84, longitude: GIBSData.minLonWGS84)
-            let southwestOverlay = GMSGroundOverlay(bounds:GMSCoordinateBounds(coordinate: southwestCorner, coordinate: centerCorner), icon: self.currentMapLayers[layerIndex].southwest)
+            let southwestOverlay = GMSGroundOverlay(bounds:GMSCoordinateBounds(coordinate: southwestCorner, coordinate: centerCorner), icon: self.currentMapLayers[layerIndex].imgs["southwest"])
             southwestOverlay.map = self.mapView
         })
     }
     
-   
+    // MARK: - Legends Table functions
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let layersWithLegends = GIBSData.myLayers.filter({
+            if $0.enabled {
+                if let _ = $0.wmsLayer.style?.legendURL.onlineResource.url {
+                    return true
+                }
+            }
+            return false
+        })
+        print("layersWithLegends: \(layersWithLegends)")
+        
+        // Adjust table behavior depending on how many legends are used
+        switch(layersWithLegends.count) {
+        // hide the table if there are no legends to show
+        case 0:
+            print("hmm how do i hide a table")
+        // disable scrolling if there is only 1 legend
+        case 1:
+            tableView.isScrollEnabled = false
+        // otherwise enable scrolling to see all the legends
+        default:
+            tableView.isScrollEnabled = true
+        }
+        return layersWithLegends.count
+    }
+    
+    // Download and display the legends for the layers that have them
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LegendCell")! as! LegendTableViewCell
+        if let legendURL = GIBSData.myLayers.filter({ $0.enabled })[indexPath.row].wmsLayer.style?.legendURL.onlineResource.url {
+            downloadImageUsingCacheWithLink(urlLink: legendURL, layerIndex: indexPath.row, imagePurpose: "legend", completion: { () -> Void in
+                cell.legendImageView.image = self.currentMapLayers[indexPath.row].imgs["legend"]
+            })
+        }
+        return cell
+    }
+    
 }
 
