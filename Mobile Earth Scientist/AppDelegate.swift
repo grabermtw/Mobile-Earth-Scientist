@@ -8,11 +8,13 @@
 import UIKit
 import GoogleMaps
 import CoreData
+import Firebase
 
+// "The connection to service named com.apple.commcenter.coretelephony.xpc was invalidated: failed at lookup with error 3 - No such process.": https://issuetracker.google.com/issues/208490523
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
-    // Set up CoreData container
+    // Set up CoreData container!
     // from the CoreData documentation: https://developer.apple.com/documentation/coredata/setting_up_a_core_data_stack
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "MobileEarthScientistModel")
@@ -51,6 +53,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GIBSData.downloadXML {
             print("XML download successful!")
         }
+        
+        FirebaseApp.configure()
         
         return true
     }

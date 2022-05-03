@@ -132,7 +132,6 @@ class MapViewController: UIViewController, UITableViewDataSource {
             }
             return false
         })
-        print("layersWithLegends: \(layersWithLegends)")
         
         // Adjust table behavior depending on how many legends are used
         switch(layersWithLegends.count) {
