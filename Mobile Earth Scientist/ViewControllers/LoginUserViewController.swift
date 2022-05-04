@@ -37,11 +37,8 @@ class LoginUserViewController: UIViewController {
         print("User email: \(email)")
         Auth.auth().signIn(withEmail: email, password: password) {
             (user, error) in
-            if error != nil {
-                let alertController = UIAlertController(title: "Incorrect Credentials!", message: "Wrong username and/or password!", preferredStyle: .alert)
-                let cancel = UIAlertAction(title:"OK", style: .cancel, handler: nil)
-                alertController.addAction(cancel)
-                self.present(alertController, animated: true, completion: nil)
+            if let newError = error {
+                self.present(Alerter.makeInfoAlert(title: "Incorrect Credentials!", message: newError.localizedDescription), animated: true, completion: nil)
                 success(false, error)
             }
             success(true, nil)
@@ -89,8 +86,6 @@ class LoginUserViewController: UIViewController {
             self.passwordTextField.text = ""
         }
     }
-    
-    
     
     // MARK: - Navigation
     

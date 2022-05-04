@@ -14,6 +14,9 @@
 		D4752B3C2820BAAF00BDA473 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = D4752B3B2820BAAF00BDA473 /* FirebaseStorage */; };
 		D4752B3E2820C41500BDA473 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4752B3D2820C41500BDA473 /* UserInfo.swift */; };
 		D4752B402820C7F500BDA473 /* ScienceShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4752B3F2820C7F500BDA473 /* ScienceShareViewController.swift */; };
+		D48292CA2821CBB100E3A687 /* CustomLayerGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48292C92821CBB100E3A687 /* CustomLayerGroup.swift */; };
+		D48292CC2821DA8700E3A687 /* Alerter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48292CB2821DA8700E3A687 /* Alerter.swift */; };
+		D48292CE2821DE7400E3A687 /* ScienceShareTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48292CD2821DE7400E3A687 /* ScienceShareTableViewCell.swift */; };
 		D4D7F2D6281CCA4900544956 /* GoogleMapsBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D7F2D5281CCA4900544956 /* GoogleMapsBase.framework */; };
 		D4D7F2D8281CCA6200544956 /* GoogleMapsCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D7F2D7281CCA6200544956 /* GoogleMapsCore.framework */; };
 		D4D7F2DA281CCA7600544956 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4D7F2D9281CCA7600544956 /* GoogleMaps.framework */; };
@@ -65,6 +68,9 @@
 /* Begin PBXFileReference section */
 		D4752B3D2820C41500BDA473 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		D4752B3F2820C7F500BDA473 /* ScienceShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScienceShareViewController.swift; sourceTree = "<group>"; };
+		D48292C92821CBB100E3A687 /* CustomLayerGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLayerGroup.swift; sourceTree = "<group>"; };
+		D48292CB2821DA8700E3A687 /* Alerter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerter.swift; sourceTree = "<group>"; };
+		D48292CD2821DE7400E3A687 /* ScienceShareTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScienceShareTableViewCell.swift; sourceTree = "<group>"; };
 		D4D7F2D5281CCA4900544956 /* GoogleMapsBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMapsBase.framework; sourceTree = "<group>"; };
 		D4D7F2D7281CCA6200544956 /* GoogleMapsCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMapsCore.framework; sourceTree = "<group>"; };
 		D4D7F2D9281CCA7600544956 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
@@ -201,6 +207,7 @@
 				D4F05795281F58F800F19D1B /* LegendTableViewCell.swift */,
 				D4E6F95A281E177100765895 /* MyLayersTableViewCell.swift */,
 				D4E6F954281DC5AD00765895 /* SearchTableViewCell.swift */,
+				D48292CD2821DE7400E3A687 /* ScienceShareTableViewCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -212,6 +219,8 @@
 				D4E6F95C281F02F400765895 /* MESLayerInfo.swift */,
 				D4E6F956281DD22D00765895 /* GIBSData.swift */,
 				D4752B3D2820C41500BDA473 /* UserInfo.swift */,
+				D48292C92821CBB100E3A687 /* CustomLayerGroup.swift */,
+				D48292CB2821DA8700E3A687 /* Alerter.swift */,
 			);
 			path = Structs;
 			sourceTree = "<group>";
@@ -350,8 +359,11 @@
 				D4E6F95D281F02F400765895 /* MESLayerInfo.swift in Sources */,
 				D4F0579F2820466700F19D1B /* WelcomeViewController.swift in Sources */,
 				D4E6F959281E16EF00765895 /* MyLayersViewController.swift in Sources */,
+				D48292CE2821DE7400E3A687 /* ScienceShareTableViewCell.swift in Sources */,
 				D5ADE4F527FB726E00D59475 /* AppDelegate.swift in Sources */,
 				D4F05796281F58F800F19D1B /* LegendTableViewCell.swift in Sources */,
+				D48292CA2821CBB100E3A687 /* CustomLayerGroup.swift in Sources */,
+				D48292CC2821DA8700E3A687 /* Alerter.swift in Sources */,
 				D4F0579D2820266C00F19D1B /* MobileEarthScientistModel.xcdatamodeld in Sources */,
 				D4F0579A2820188400F19D1B /* FavoritesTableViewCell.swift in Sources */,
 				D4E6F957281DD22D00765895 /* GIBSData.swift in Sources */,

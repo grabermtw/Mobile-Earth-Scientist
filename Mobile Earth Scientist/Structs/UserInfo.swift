@@ -12,6 +12,7 @@ import FirebaseDatabase
 struct UserInfo {
     
     static var username: String?
+    static var uid: String?
     
     // Call this to populate the user fields after signing in
     static func getUserInfo(success:@escaping () -> Void) {
@@ -21,6 +22,7 @@ struct UserInfo {
                 if let dict = user.value as? [String: String] {
                     print("dict contents: \(dict)")
                     username = dict["displayName"]
+                    self.uid = uid
                 }
                 print("Logged in!")
                 success()

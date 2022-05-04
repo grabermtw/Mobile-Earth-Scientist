@@ -35,20 +35,14 @@ class RegisterUserViewController: UIViewController {
         }
         // We've got two password fields, so they better match!
         if password != rePassword {
-            let alertController = UIAlertController(title: "Registration error", message: "Both password fields must match!", preferredStyle: .alert)
-            let cancel = UIAlertAction(title:"OK", style: .cancel, handler: nil)
-            alertController.addAction(cancel)
-            self.present(alertController, animated: true, completion: nil)
+            self.present(Alerter.makeInfoAlert(title: "Registration error", message: "Both password fields must match!"), animated: true, completion: nil)
             success(false, "Both password fields must match!" as? Error)
             return
         }
         Auth.auth().createUser(withEmail: email, password: password) {
             (user, error) in
-            if error != nil {
-                let alertController = UIAlertController(title: "Registration error", message: error!.localizedDescription, preferredStyle: .alert)
-                let cancel = UIAlertAction(title:"OK", style: .cancel, handler: nil)
-                alertController.addAction(cancel)
-                self.present(alertController, animated: true, completion: nil)
+            if let newError = error {
+                self.present(Alerter.makeInfoAlert(title: "Registration Error", message: newError.localizedDescription), animated: true, completion: nil)
                 success(false, error)
                 return
             }

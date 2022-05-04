@@ -161,5 +161,12 @@ class MapViewController: UIViewController, UITableViewDataSource {
         return cell
     }
     
+    
+    // MARK: - Navigation
+    
+    // This is just to allow the "Okay!" button on the welcome page to also bring the user back to this view
+    @IBAction func unwindToMapView(segue: UIStoryboardSegue) {
+
+    }
 }
 
