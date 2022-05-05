@@ -36,7 +36,7 @@ class FavoritesTableViewCell: UITableViewCell {
                 setLayerAddedToggle(false)
             }
             else {
-                GIBSData.myLayers.append(MESLayerInfo(wmsLayer: wmsLayer))
+                GIBSData.myLayers.insert(MESLayerInfo(wmsLayer: wmsLayer), at: 0)
                 setLayerAddedToggle(true)
             }
         }

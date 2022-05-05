@@ -47,8 +47,6 @@ struct GIBSData {
         }
     }
     
-    // This will hold the layers that are present in the MyLayers table
-    static var myLayers: [MESLayerInfo] = []
     // This will hold the layers that are present in the Favorites table
     static var myFavorites: [MESLayerInfo] = [] {
         // Use CoreData to persistently save the updated array each time it changes
@@ -59,6 +57,44 @@ struct GIBSData {
                 }
             }
         }
+    }
+    
+    // This will hold the layers that are present in the MyLayers table
+    static var myLayers: [MESLayerInfo] = []
+    
+    static var layerNameStrForURL: String {
+        var result = ""
+        for layerInfo in self.myLayers.reversed() where layerInfo.enabled {
+            if result == "" {
+                result += layerInfo.wmsLayer.name
+            } else {
+                result += (",\(layerInfo.wmsLayer.name)")
+            }
+        }
+        return result
+    }
+    
+    // These values come from https://nasa-gibs.github.io/gibs-api-docs/access-basics/#map-projections in the Web Mercator / "Google Projection" (EPSG:3857) section under "Native Coordinates"
+    static var northeastURL: String {
+        makeLayerURL(bbox: "0,0,20037508.34278925,20037508.34278925")
+    }
+    static var northwestURL: String {
+        makeLayerURL(bbox: "-20037508.34278925,0,0,20037508.34278925")
+    }
+    static var southeastURL: String {
+        makeLayerURL(bbox: "0,-20037508.34278925,20037508.34278925,0")
+    }
+    static var southwestURL: String {
+        makeLayerURL(bbox: "-20037508.34278925,-20037508.34278925,0,0")
+    }
+    
+    // construct a URL for getting a layer image
+    static func makeLayerURL(bbox: String) -> String {
+        let timeSpec = ""
+        /*if let layerTime = self.layerTime {
+            timeSpec = "&TIME=\(layerTime)"
+        }*/
+        return "https://gibs.earthdata.nasa.gov/wms/epsg3857/best/wms.cgi?version=1.3.0&service=WMS&request=GetMap&format=\(MESLayerInfo.wmsImgFormat)&STYLE=default&bbox=\(bbox)&CRS=EPSG:3857&HEIGHT=\(MESLayerInfo.imgSize)&WIDTH=\(MESLayerInfo.imgSize)\(timeSpec)&layers=\(layerNameStrForURL)"
     }
     
     // download the XML info from the GetCapabilities URL, as done in the class slides with JSON
@@ -83,6 +119,8 @@ struct GIBSData {
         }.resume()
         return
     }
+    
+    
     
     // MARK: - Core Data
     

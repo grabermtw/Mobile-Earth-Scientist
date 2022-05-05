@@ -29,9 +29,6 @@ class MapViewController: UIViewController, UITableViewDataSource {
         // Do any additional setup after loading the view.
         
         mapView.camera = GMSCameraPosition.camera(withLatitude: 0, longitude: 0, zoom: 1.0)
-        // demo layer, temporary
-        //addWMSLayerOverlay(northeast: UIImage(named:"wms_northeast")!, northwest: UIImage(named:"wms_northwest")!, southeast: UIImage(named:"wms_southeast")!, southwest: UIImage(named:"wms_southwest")!)
-        
         
         performSegue(withIdentifier: "WelcomeSegue", sender: nil)
     }
@@ -39,9 +36,11 @@ class MapViewController: UIViewController, UITableViewDataSource {
     override func viewWillAppear(_ animated: Bool) {
         mapView.clear()
         currentMapLayers = []
+        
         for layerInfo in GIBSData.myLayers.reversed() where layerInfo.enabled {
-            addWMSLayerOverlay(layerInfo: layerInfo)
+            currentMapLayers.append(MapLayer())
         }
+        addWMSLayerOverlay()
         legendsTableView.reloadData()
     }
     
@@ -83,8 +82,7 @@ class MapViewController: UIViewController, UITableViewDataSource {
     // Google Maps crashes if an overlay image's bounding box goes too wide,
     // so for this project we use Northeast, Northwest, Southeast, Southwest quadrants to
     // make up a full layer
-    func addWMSLayerOverlay(layerInfo: MESLayerInfo) {
-       
+    func addWMSLayerOverlay() {
         // Add a new entry in the currentMapLayers list that will contain the new images
         let layerIndex = currentMapLayers.count
         currentMapLayers.append(MapLayer())
@@ -93,28 +91,28 @@ class MapViewController: UIViewController, UITableViewDataSource {
         
         // NORTHEAST
         // download quadrant image
-        downloadImageUsingCacheWithLink(urlLink: layerInfo.northeastURL, layerIndex: layerIndex, imagePurpose: "northeast", completion: { () -> Void in
+        downloadImageUsingCacheWithLink(urlLink: GIBSData.northeastURL, layerIndex: layerIndex, imagePurpose: "northeast", completion: { () -> Void in
             let northeastCorner = CLLocationCoordinate2D(latitude: GIBSData.maxLatWGS84, longitude: GIBSData.maxLonWGS84)
             let northeastOverlay = GMSGroundOverlay(bounds:GMSCoordinateBounds(coordinate: centerCorner, coordinate: northeastCorner), icon: self.currentMapLayers[layerIndex].imgs["northeast"])
             northeastOverlay.map = self.mapView
         })
         
         // NORTHWEST
-        downloadImageUsingCacheWithLink(urlLink: layerInfo.northwestURL, layerIndex: layerIndex, imagePurpose: "northwest", completion: { () -> Void in
+        downloadImageUsingCacheWithLink(urlLink: GIBSData.northwestURL, layerIndex: layerIndex, imagePurpose: "northwest", completion: { () -> Void in
             let northwestCorner = CLLocationCoordinate2D(latitude: GIBSData.maxLatWGS84, longitude: GIBSData.minLonWGS84)
             let northwestOverlay = GMSGroundOverlay(bounds:GMSCoordinateBounds(coordinate: centerCorner, coordinate: northwestCorner), icon: self.currentMapLayers[layerIndex].imgs["northwest"])
             northwestOverlay.map = self.mapView
         })
         
         // SOUTHEAST
-        downloadImageUsingCacheWithLink(urlLink: layerInfo.southeastURL, layerIndex: layerIndex, imagePurpose: "southeast", completion: { () -> Void in
+        downloadImageUsingCacheWithLink(urlLink: GIBSData.southeastURL, layerIndex: layerIndex, imagePurpose: "southeast", completion: { () -> Void in
             let southeastCorner = CLLocationCoordinate2D(latitude: GIBSData.minLatWGS84, longitude: GIBSData.maxLonWGS84)
             let southeastOverlay = GMSGroundOverlay(bounds:GMSCoordinateBounds(coordinate: southeastCorner, coordinate: centerCorner), icon: self.currentMapLayers[layerIndex].imgs["southeast"])
             southeastOverlay.map = self.mapView
         })
         
         // SOUTHWEST
-        downloadImageUsingCacheWithLink(urlLink: layerInfo.southwestURL, layerIndex: layerIndex, imagePurpose: "southwest", completion: { () -> Void in
+        downloadImageUsingCacheWithLink(urlLink: GIBSData.southwestURL, layerIndex: layerIndex, imagePurpose: "southwest", completion: { () -> Void in
             let southwestCorner = CLLocationCoordinate2D(latitude: GIBSData.minLatWGS84, longitude: GIBSData.minLonWGS84)
             let southwestOverlay = GMSGroundOverlay(bounds:GMSCoordinateBounds(coordinate: southwestCorner, coordinate: centerCorner), icon: self.currentMapLayers[layerIndex].imgs["southwest"])
             southwestOverlay.map = self.mapView
@@ -164,7 +162,7 @@ class MapViewController: UIViewController, UITableViewDataSource {
     
     // MARK: - Navigation
     
-    // This is just to allow the "Okay!" button on the welcome page to also bring the user back to this view
+    // This is just to allow the "Begin!" button on the welcome page to also bring the user back to this view
     @IBAction func unwindToMapView(segue: UIStoryboardSegue) {
 
     }
