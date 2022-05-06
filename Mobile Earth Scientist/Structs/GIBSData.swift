@@ -8,6 +8,7 @@
 import GoogleMaps
 import XMLCoder
 import CoreData
+import Foundation
 
 // Errors that might appear when downloading GetCapabilities XML
 enum SerializationError: Error {
@@ -88,12 +89,15 @@ struct GIBSData {
         makeLayerURL(bbox: "-20037508.34278925,-20037508.34278925,0,0")
     }
     
+    static var date: Date?
+    
     // construct a URL for getting a layer image
     static func makeLayerURL(bbox: String) -> String {
-        let timeSpec = ""
-        /*if let layerTime = self.layerTime {
-            timeSpec = "&TIME=\(layerTime)"
-        }*/
+        var timeSpec = ""
+        if let date = self.date {
+            timeSpec = "&TIME="
+            timeSpec += date.ISO8601Format()
+        }
         return "https://gibs.earthdata.nasa.gov/wms/epsg3857/best/wms.cgi?version=1.3.0&service=WMS&request=GetMap&format=\(MESLayerInfo.wmsImgFormat)&STYLE=default&bbox=\(bbox)&CRS=EPSG:3857&HEIGHT=\(MESLayerInfo.imgSize)&WIDTH=\(MESLayerInfo.imgSize)\(timeSpec)&layers=\(layerNameStrForURL)"
     }
     
