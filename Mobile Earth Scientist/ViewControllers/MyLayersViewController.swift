@@ -10,6 +10,8 @@ import UIKit
 class MyLayersViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var datePicker: UIDatePicker!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,7 +21,56 @@ class MyLayersViewController: UIViewController, UITableViewDataSource {
     
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
+        createDatePicker()
     }
+    
+    // This function determines the earliest and the latest dates of all the dates to create the date picker.
+    func createDatePicker() {
+        // Get the date structs for the dates associated with each layer
+        var earliestDate: Date?
+        var latestDate: Date?
+        var defaultDates: [Date] = []
+        for layerInfo in GIBSData.myLayers {
+            // get the earliest date
+            if let currentEarliestDate = earliestDate {
+                if let earliestLayerDate = layerInfo.dateRange?.0 {
+                    if earliestLayerDate < currentEarliestDate {
+                        earliestDate = earliestLayerDate
+                    }
+                }
+            } else {
+                earliestDate = layerInfo.dateRange?.0
+            }
+            // get the latest date
+            if let currentLatestDate = latestDate {
+                if let latestLayerDate = layerInfo.dateRange?.1 {
+                    if latestLayerDate > currentLatestDate {
+                        latestDate = latestLayerDate
+                    }
+                }
+            } else {
+                latestDate = layerInfo.dateRange?.1
+            }
+            if let layerDefaultDate = layerInfo.defaultDate {
+                defaultDates.append(layerDefaultDate)
+            }
+        }
+        // Reveal the date picker if we have layers with dates
+        if earliestDate != nil && latestDate != nil {
+            datePicker.isHidden = false
+            datePicker.minimumDate = earliestDate
+            datePicker.maximumDate = latestDate
+        } else {
+            datePicker.isHidden = true
+            GIBSData.date = nil
+        }
+    }
+    
+    @IBAction func dateChosen(_ sender: Any) {
+        GIBSData.date = datePicker.date
+    }
+    
+    // MARK: - Table functions
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return GIBSData.myLayers.count
@@ -54,6 +105,7 @@ class MyLayersViewController: UIViewController, UITableViewDataSource {
             GIBSData.myLayers.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.endUpdates()
+            createDatePicker()
         }
     }
     
