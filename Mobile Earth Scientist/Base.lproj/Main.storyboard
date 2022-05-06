@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="B85-70-LNN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="B85-70-LNN">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -123,7 +123,7 @@ We acknowledge the use of imagery provided by services from NASA's Global Imager
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9rC-qo-Dvf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-110" y="-310"/>
+            <point key="canvasLocation" x="-897" y="-372"/>
         </scene>
         <!--Map-->
         <scene sceneID="6l8-J7-wET">
@@ -339,74 +339,93 @@ We acknowledge the use of imagery provided by services from NASA's Global Imager
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RkF-CG-nOm">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="qko-Wu-IJV">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MyLayersCell" rowHeight="86" id="AQM-yn-FCe" customClass="MyLayersTableViewCell" customModule="Mobile_Earth_Scientist" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="86"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AQM-yn-FCe" id="Rpz-mY-cne">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="86"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Layer Title" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bub-nE-ggD">
-                                                    <rect key="frame" x="20" y="0.0" width="79" height="86"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RkF-CG-nOm">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="509"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MyLayersCell" rowHeight="86" id="AQM-yn-FCe" customClass="MyLayersTableViewCell" customModule="Mobile_Earth_Scientist" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="44.5" width="414" height="86"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AQM-yn-FCe" id="Rpz-mY-cne">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="86"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Layer Title" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bub-nE-ggD">
+                                                            <rect key="frame" x="20" y="0.0" width="79" height="86"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="230" id="4kL-E7-ms7"/>
+                                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="86" id="TVq-9g-gL3"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r15-GY-aMI">
+                                                            <rect key="frame" x="333" y="27.5" width="51" height="31"/>
+                                                            <connections>
+                                                                <action selector="switchToggled:" destination="AQM-yn-FCe" eventType="valueChanged" id="fh3-KS-ptX"/>
+                                                            </connections>
+                                                        </switch>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pc9-hE-aNr">
+                                                            <rect key="frame" x="288" y="27.5" width="35" height="31"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="35" id="pN6-iA-764"/>
+                                                            </constraints>
+                                                            <state key="normal" title="Button"/>
+                                                            <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system"/>
+                                                            <connections>
+                                                                <action selector="toggleLayerPressed:" destination="AQM-yn-FCe" eventType="touchUpInside" id="bwi-nt-Vt0"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="230" id="4kL-E7-ms7"/>
-                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="86" id="TVq-9g-gL3"/>
+                                                        <constraint firstAttribute="bottom" secondItem="bub-nE-ggD" secondAttribute="bottom" id="3wa-8L-Qlt"/>
+                                                        <constraint firstItem="bub-nE-ggD" firstAttribute="top" secondItem="Rpz-mY-cne" secondAttribute="top" id="6oC-ql-iWQ"/>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="r15-GY-aMI" secondAttribute="trailing" constant="12" id="70R-T3-0hi"/>
+                                                        <constraint firstItem="bub-nE-ggD" firstAttribute="leading" secondItem="Rpz-mY-cne" secondAttribute="leading" constant="20" symbolic="YES" id="PkZ-i8-FhM"/>
+                                                        <constraint firstItem="Pc9-hE-aNr" firstAttribute="centerY" secondItem="Rpz-mY-cne" secondAttribute="centerY" id="Q6Z-z2-DSX"/>
+                                                        <constraint firstItem="r15-GY-aMI" firstAttribute="centerY" secondItem="Rpz-mY-cne" secondAttribute="centerY" id="SdS-rg-kFi"/>
+                                                        <constraint firstItem="r15-GY-aMI" firstAttribute="leading" secondItem="Pc9-hE-aNr" secondAttribute="trailing" constant="10" id="zi6-YV-fiI"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r15-GY-aMI">
-                                                    <rect key="frame" x="333" y="27.5" width="51" height="31"/>
-                                                    <connections>
-                                                        <action selector="switchToggled:" destination="AQM-yn-FCe" eventType="valueChanged" id="fh3-KS-ptX"/>
-                                                    </connections>
-                                                </switch>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pc9-hE-aNr">
-                                                    <rect key="frame" x="288" y="27.5" width="35" height="31"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="35" id="pN6-iA-764"/>
-                                                    </constraints>
-                                                    <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system"/>
-                                                    <connections>
-                                                        <action selector="toggleLayerPressed:" destination="AQM-yn-FCe" eventType="touchUpInside" id="bwi-nt-Vt0"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="bub-nE-ggD" secondAttribute="bottom" id="3wa-8L-Qlt"/>
-                                                <constraint firstItem="bub-nE-ggD" firstAttribute="top" secondItem="Rpz-mY-cne" secondAttribute="top" id="6oC-ql-iWQ"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="r15-GY-aMI" secondAttribute="trailing" constant="12" id="70R-T3-0hi"/>
-                                                <constraint firstItem="bub-nE-ggD" firstAttribute="leading" secondItem="Rpz-mY-cne" secondAttribute="leading" constant="20" symbolic="YES" id="PkZ-i8-FhM"/>
-                                                <constraint firstItem="Pc9-hE-aNr" firstAttribute="centerY" secondItem="Rpz-mY-cne" secondAttribute="centerY" id="Q6Z-z2-DSX"/>
-                                                <constraint firstItem="r15-GY-aMI" firstAttribute="centerY" secondItem="Rpz-mY-cne" secondAttribute="centerY" id="SdS-rg-kFi"/>
-                                                <constraint firstItem="r15-GY-aMI" firstAttribute="leading" secondItem="Pc9-hE-aNr" secondAttribute="trailing" constant="10" id="zi6-YV-fiI"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="layerFavoritedButton" destination="Pc9-hE-aNr" id="xmC-CB-Paf"/>
+                                                    <outlet property="layerToggleSwitch" destination="r15-GY-aMI" id="tX6-xw-7tC"/>
+                                                    <outlet property="titleLabel" destination="bub-nE-ggD" id="Ew1-5j-dFB"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
                                         <connections>
-                                            <outlet property="layerFavoritedButton" destination="Pc9-hE-aNr" id="xmC-CB-Paf"/>
-                                            <outlet property="layerToggleSwitch" destination="r15-GY-aMI" id="tX6-xw-7tC"/>
-                                            <outlet property="titleLabel" destination="bub-nE-ggD" id="Ew1-5j-dFB"/>
+                                            <outlet property="dataSource" destination="Uij-92-yas" id="Xbz-0k-CXD"/>
                                         </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="Uij-92-yas" id="Xbz-0k-CXD"/>
-                                </connections>
-                            </tableView>
+                                    </tableView>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="yxd-RR-lFj">
+                                        <rect key="frame" x="0.0" y="509" width="414" height="216"/>
+                                        <connections>
+                                            <action selector="dateChosen:" destination="Uij-92-yas" eventType="valueChanged" id="EfL-1x-obc"/>
+                                        </connections>
+                                    </datePicker>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="yxd-RR-lFj" secondAttribute="bottom" id="G87-QI-vbZ"/>
+                                    <constraint firstItem="yxd-RR-lFj" firstAttribute="leading" secondItem="qko-Wu-IJV" secondAttribute="leading" id="UkA-cn-MuS"/>
+                                    <constraint firstItem="RkF-CG-nOm" firstAttribute="top" secondItem="qko-Wu-IJV" secondAttribute="top" id="d1N-a6-Bpw"/>
+                                    <constraint firstAttribute="trailing" secondItem="RkF-CG-nOm" secondAttribute="trailing" id="edC-SP-mCy"/>
+                                    <constraint firstItem="RkF-CG-nOm" firstAttribute="leading" secondItem="qko-Wu-IJV" secondAttribute="leading" id="wyD-lg-YnK"/>
+                                    <constraint firstAttribute="trailing" secondItem="yxd-RR-lFj" secondAttribute="trailing" id="xPe-cD-aHw"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="aIP-mD-m5c"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="RkF-CG-nOm" firstAttribute="leading" secondItem="aIP-mD-m5c" secondAttribute="leading" id="95u-cz-qAW"/>
-                            <constraint firstItem="RkF-CG-nOm" firstAttribute="bottom" secondItem="aIP-mD-m5c" secondAttribute="bottom" id="J5Y-mf-pzc"/>
-                            <constraint firstItem="RkF-CG-nOm" firstAttribute="trailing" secondItem="aIP-mD-m5c" secondAttribute="trailing" id="ptG-B1-Mh2"/>
-                            <constraint firstItem="RkF-CG-nOm" firstAttribute="top" secondItem="aIP-mD-m5c" secondAttribute="top" id="r5X-Nm-pgl"/>
+                            <constraint firstItem="qko-Wu-IJV" firstAttribute="top" secondItem="aIP-mD-m5c" secondAttribute="top" id="JKy-vj-fES"/>
+                            <constraint firstItem="qko-Wu-IJV" firstAttribute="bottom" secondItem="aIP-mD-m5c" secondAttribute="bottom" id="Xo3-PN-8y3"/>
+                            <constraint firstItem="qko-Wu-IJV" firstAttribute="trailing" secondItem="aIP-mD-m5c" secondAttribute="trailing" id="eof-G9-H54"/>
+                            <constraint firstItem="qko-Wu-IJV" firstAttribute="leading" secondItem="aIP-mD-m5c" secondAttribute="leading" id="zof-Md-Dis"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="My Layers" id="I0L-P5-Kws">
@@ -417,6 +436,7 @@ We acknowledge the use of imagery provided by services from NASA's Global Imager
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="datePicker" destination="yxd-RR-lFj" id="nFv-Lx-uD9"/>
                         <outlet property="tableView" destination="RkF-CG-nOm" id="RI6-wh-z6M"/>
                     </connections>
                 </viewController>
