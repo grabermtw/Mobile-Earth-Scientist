@@ -28,12 +28,6 @@ class ScienceShareTableViewCell: UITableViewCell {
                     layerList += "Layer: \(layerTitle)\n"
                 }
                 self.layerListTextView.text = layerList
-                // The trash button is only available on layer groups that the current user created.
-                if layerGroup.uid == UserInfo.uid {
-                    deleteButton.isHidden = false
-                } else {
-                    deleteButton.isHidden = true
-                }
             }
         }
     }
@@ -72,6 +66,17 @@ class ScienceShareTableViewCell: UITableViewCell {
                 lg.groupId == id
             })
             vc?.tableView.reloadData()
+        }
+    }
+    
+    // The trash button is only available on layer groups that the current user created.
+    func determineTrashButton() {
+        if let layerGroup = layerGroup {
+            if layerGroup.uid == UserInfo.uid {
+                deleteButton.isHidden = false
+            } else {
+                deleteButton.isHidden = true
+            }
         }
     }
 }

@@ -10,15 +10,14 @@ import UIKit
 class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating {
     
     @IBOutlet weak var tableView: UITableView!
-    var filteredData: [WMS_Capabilities.Capability.LayerParent.LayerInfo]?
+    var filteredLayers: [WMS_Capabilities.Capability.LayerParent.LayerInfo]?
     var searchController: UISearchController!
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.dataSource = self
-        filteredData = GIBSData.capabilities?.capability.layerParent.layers
+        filteredLayers = GIBSData.capabilities?.capability.layerParent.layers
 
         // Set to nil to use current view controller
         searchController = UISearchController(searchResultsController: nil)
@@ -29,11 +28,6 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         definesPresentationContext = true
         
         tableView.tableHeaderView = searchController.searchBar
-        
-        /*// Uncomment this to put search bar in navigation bar, not sure if that's ideal...
-        navigationItem.titleView = searchController.searchBar
-        searchController.hidesNavigationBarDuringPresentation = false
-        */
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,11 +39,11 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     // Populate table
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LayerSearchCell")! as! SearchTableViewCell
-        cell.titleLabel?.text = filteredData![indexPath.row].title
-        cell.wmsLayer = filteredData![indexPath.row]
+        cell.titleLabel?.text = filteredLayers![indexPath.row].title
+        cell.wmsLayer = filteredLayers![indexPath.row]
         // Inform the cell of whether its layer was already added to GIBS.myLayers
         if GIBSData.myLayers.contains(where: {
-            $0.wmsLayer == filteredData![indexPath.row]
+            $0.wmsLayer == filteredLayers![indexPath.row]
         }) {
             cell.setLayerAddedToggle(true)
         } else {
@@ -60,7 +54,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     
     // Number of cells in table
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let filteredData = filteredData {
+        if let filteredData = filteredLayers {
             return filteredData.count
         }
         else {
@@ -71,7 +65,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     // Filter table via search
     func updateSearchResults(for searchController: UISearchController) {
         if let searchText = searchController.searchBar.text {
-            filteredData = searchText.isEmpty ? GIBSData.capabilities?.capability.layerParent.layers : GIBSData.capabilities?.capability.layerParent.layers.filter({
+            filteredLayers = searchText.isEmpty ? GIBSData.capabilities?.capability.layerParent.layers : GIBSData.capabilities?.capability.layerParent.layers.filter({
                 (layer: WMS_Capabilities.Capability.LayerParent.LayerInfo) -> Bool in
                 return layer.title.lowercased().contains(searchText.lowercased())
             })

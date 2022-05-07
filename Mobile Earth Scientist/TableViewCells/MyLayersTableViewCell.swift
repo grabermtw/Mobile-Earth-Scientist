@@ -39,8 +39,8 @@ class MyLayersTableViewCell: UITableViewCell {
         }
     }
     
-    // When the add layer button is pressed...
-    @IBAction func toggleLayerPressed(_ sender: Any) {
+    // When the add favorite heart button is pressed...
+    @IBAction func toggleLayerFavorited(_ sender: Any) {
         if let wmsLayer = wmsLayer {
             if favorite {
                 GIBSData.myFavorites.removeAll(where: {

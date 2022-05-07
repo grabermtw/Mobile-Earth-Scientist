@@ -63,6 +63,7 @@ struct GIBSData {
     // This will hold the layers that are present in the MyLayers table
     static var myLayers: [MESLayerInfo] = []
     
+    // This is a string consisting of the names of all the enabled layers in myLayers appended together with commas between them. This is the format required for requesting multiple layers in one image from the GIBS API via WMS request
     static var layerNameStrForURL: String {
         var result = ""
         for layerInfo in self.myLayers.reversed() where layerInfo.enabled {
@@ -92,7 +93,7 @@ struct GIBSData {
     static var date: Date?
     
     // construct a URL for getting a layer image
-    static func makeLayerURL(bbox: String) -> String {
+    static private func makeLayerURL(bbox: String) -> String {
         var timeSpec = ""
         if let date = self.date {
             timeSpec = "&TIME="
@@ -152,7 +153,7 @@ struct GIBSData {
     // Save the list of favorites using CoreData
     static private func saveFavorites() async {
         if let context = self.backgroundContext {
-            // First, delete all old favorites from CoreData
+            // First, delete all old favorites from CoreData using a batch delete request
             let fetchReq: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "FavoriteLayer")
             let deleteReq = NSBatchDeleteRequest(fetchRequest: fetchReq)
             do {

@@ -42,7 +42,7 @@ class FavoritesTableViewCell: UITableViewCell {
         }
     }
     
-    // Used for informing the button of whether its layer is in GIBSData.myFavorites
+    // Used for informing the button of whether its layer is in GIBSData.myLayers
     func setLayerAddedToggle(_ added: Bool) {
         if added {
             layerAdded = true

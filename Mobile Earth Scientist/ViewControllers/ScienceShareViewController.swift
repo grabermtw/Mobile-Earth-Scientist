@@ -114,6 +114,7 @@ class ScienceShareViewController: UIViewController, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LayerGroupCell")! as! ScienceShareTableViewCell
         cell.layerGroup = layerGroups[indexPath.row]
         cell.vc = self
+        cell.determineTrashButton()
         return cell
     }
     

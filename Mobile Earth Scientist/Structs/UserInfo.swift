@@ -37,6 +37,7 @@ struct UserInfo {
         do {
             try Auth.auth().signOut()
             username = nil
+            uid = nil
         } catch let signOutError as NSError {
             print("Firebase sign-out error: \(signOutError)")
         }
