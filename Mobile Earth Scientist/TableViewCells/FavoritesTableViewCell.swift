@@ -27,7 +27,7 @@ class FavoritesTableViewCell: UITableViewCell {
     }
 
     // When the add layer button is pressed...
-    @IBAction func toggleLayerPressed(_ sender: Any) {
+    @IBAction func toggleLayerPressed(_ sender: UIButton!) {
         if let wmsLayer = wmsLayer {
             if layerAdded {
                 GIBSData.myLayers.removeAll(where: {

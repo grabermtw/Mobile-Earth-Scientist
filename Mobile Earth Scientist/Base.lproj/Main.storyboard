@@ -377,7 +377,7 @@ We acknowledge the use of imagery provided by services from NASA's Global Imager
                                                             <state key="normal" title="Button"/>
                                                             <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system"/>
                                                             <connections>
-                                                                <action selector="toggleLayerPressed:" destination="AQM-yn-FCe" eventType="touchUpInside" id="bwi-nt-Vt0"/>
+                                                                <action selector="toggleLayerFavorited:" destination="AQM-yn-FCe" eventType="touchUpInside" id="66N-Uk-V3w"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
